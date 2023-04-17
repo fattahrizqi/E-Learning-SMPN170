@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/classSiswa.css">
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="left">
+                <img class="hamburger" src="../asset/list.svg" onclick="showSidebar()"></img>
+                <a href="classSiswa.html" class="title">SMPN 170</a>
+            </div>
+            <div onclick="showModal()" class="right">
+                <h3>Gabung kelas</h3>
+                <img src="../asset/plus.svg">
+            </div>
+        </div>
+        <nav class="sidebar">
+            <div class="title">
+                <div class="left">
+                    <img src="../asset/house-fill.svg">
+                    <h3>Kelas</h3>
+                </div>
+                <div class="close" onclick="hideSidebar()">
+                    <img src="../asset/x-bold.svg">
+                </div>
+            </div>
+            <div class="menu">
+                <!-- if menu = 0 -->
+                <!-- <div class="wrapper-emptyClass">
+                    <p>Tidak ada kelas !</p>
+                </div> -->
+
+                <!-- if menu = 1 -->
+                <div class="wrapper-kelas">
+                    <a href="#" class="kelas">
+                        <div class="inisial">M</div>
+                        <h3 class="title">Matematika</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">I</div>
+                        <h3 class="title">IPA</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">B</div>
+                        <h3 class="title">Bhs Indonesia</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">P</div>
+                        <h3 class="title">Prakarya</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">P</div>
+                        <h3 class="title">Prakarya</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">P</div>
+                        <h3 class="title">Prakarya</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">P</div>
+                        <h3 class="title">Prakarya</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">P</div>
+                        <h3 class="title">Prakarya</h3>
+                    </a>
+                    <a href="#" class="kelas">
+                        <div class="inisial">P</div>
+                        <h3 class="title">Prakarya</h3>
+                    </a>
+                </div>
+                <div class="akun">
+                    <a href="#" class="profil">
+                        <img src="../asset/user.svg" class="icon">
+                        <h3>Nickymicko Ayub</h3>
+                    </a>
+                    <a href="#" class="logout">
+                        <img src="../asset/sign-out.svg" class="icon">
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="filter-background"></div>
+
+        <div class="wrapper-modal">
+            <div class="top">
+                <h1>Kode Kelas</h1>
+                <img src="../asset/x.svg" onclick="hideModal()" class="close">
+            </div>
+            <div class="content">
+                <h3>Mintalah kode kelas kepada guru, lalu masukan di sini!</h3>
+                <input type="text" placeholder="31XXXXXX">
+                <p>*Gunakan kode kelas yang terdiri dari 6-8 huruf atau angka, tanpa spasi atau simbol</p>
+            </div>
+        </div>
+
+        <!-- if class = 0 -->
+        <!-- <div class="wrapper-emptyCard">
+            <img src="../asset/cart is empty.png">
+            <h3>Kamu belum bergabung dengan kelas apapun.</br>Kontak gurumu untuk mendapatkan kode referensi</h3>
+            <button onclick="showModal()">Gabung +</button>
+        </div> -->
+
+        <!-- if class = 1 -->
+        <div class="wrapper-cards">
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">MTK</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">Bahasa Indonesia</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">MTK</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">Bahasa Indonesia</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">MTK</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">MTK</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">MTK</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+            <div onclick="location.href='detailClassSiswa.html'" class="card">
+                <div class="image">
+                    <img src="../asset/mtk.png">
+                </div>
+                <div class="content">
+                    <h1 class="mapel">MTK</h1>
+                    <p class="creator">Abdul Mahfud </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../script/scriptSiswa.js"></script>
+</body> 
+</html>

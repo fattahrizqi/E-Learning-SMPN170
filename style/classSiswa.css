@@ -1,0 +1,357 @@
+:root {
+  --black: #2d2d2d;
+  --orange: #ffcd52;
+  --green: #00594d;
+  --blue: #4178b9;
+}
+
+*,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+/* topbar */
+.topbar {
+  background-color: white;
+  border-bottom: 1px solid var(--black);
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.topbar .left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topbar .left .hamburger {
+  cursor: pointer;
+}
+
+.topbar .left .title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.topbar .right {
+  text-decoration: none;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.topbar .right h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+/* end topbar */
+
+/* sidebar */
+.sidebar {
+  /* display: none; */
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0;
+  left: -400px;
+  min-width: 300px;
+  height: 100vh;
+  box-shadow: 4px 0px 11px rgba(197, 197, 197, 0.438);
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 40px 32px 40px;
+  background-color: var(--orange);
+}
+
+.sidebar .title .left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.sidebar .title .left h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.sidebar .title .close {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* empty class */
+.wrapper-emptyClass {
+  font-size: 18px;
+  width: max-content;
+  margin: 3rem auto;
+  color: var(--black);
+}
+/* end empty class */
+
+.sidebar .menu .wrapper-kelas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 30px;
+  overflow: auto;
+  max-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 280px;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.sidebar .menu .wrapper-kelas::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.sidebar .menu .kelas {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px;
+  color: var(--black);
+  border-radius: 10px;
+}
+
+.sidebar .menu .kelas:hover {
+  background-color: var(--orange);
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar .menu .kelas:hover .inisial {
+  border: 2px solid white;
+}
+
+.sidebar .menu .kelas .inisial {
+  border: 1px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.sidebar .menu .kelas .title {
+  all: unset;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.sidebar .menu .akun {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 40px 36px 40px;
+  background-color: white;
+  border-top: 1px solid var(--black);
+}
+
+.sidebar .menu .akun .profil,
+.sidebar .menu .akun .logout {
+  display: flex;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.sidebar .menu .akun h3 {
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* end sidebar */
+
+/* modal box */
+.wrapper-modal {
+  position: fixed;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--black);
+  border-radius: 32px;
+  width: 400px;
+  display: none;
+}
+
+.wrapper-modal.active {
+  display: block;
+}
+
+.filter-background {
+  background-color: rgba(0, 0, 0, 0.342);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+}
+
+.wrapper-modal .top {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--black);
+}
+
+.wrapper-modal .top h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.wrapper-modal .top .close {
+  position: absolute;
+  top: 24px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.wrapper-modal .content {
+  padding: 32px 40px 40px 40px;
+}
+
+.wrapper-modal .content h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.wrapper-modal .content input {
+  all: unset;
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  padding: 12px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wrapper-modal .content p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #656565;
+}
+
+/* end modal */
+
+/* empty card */
+.wrapper-emptyCard {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20vh;
+}
+
+.wrapper-emptyCard img {
+  max-width: 270px;
+}
+
+.wrapper-emptyCard h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #5e5e5e;
+  text-align: center;
+}
+
+.wrapper-emptyCard button {
+  all: unset;
+  padding: 12px 32px;
+  background-color: var(--orange);
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* end empty card */
+
+/* cards */
+.wrapper-cards {
+  padding: 8rem 5rem 3rem 5rem;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.wrapper-cards .card {
+  border: 1px solid var(--black);
+  border-radius: 20px;
+  display: flex;
+  max-width: 300px;
+  max-height: 240px;
+  box-sizing: border-box;
+  cursor: pointer;
+  /* gap: 16px; */
+}
+
+.wrapper-cards .card .image {
+  flex: 1.2;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.wrapper-cards .card .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px 0 0 20px;
+}
+
+.wrapper-cards .card .content {
+  flex: 2;
+  align-self: flex-end;
+  padding: 0 20px 20px 16px;
+  /* padding-bottom: 24px; */
+  box-sizing: border-box;
+}
+
+.wrapper-cards .card .content .mapel {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 26px;
+  /* border-bottom: 1px solid var(--black); */
+}
+
+.wrapper-cards .card .content .creator {
+  font-size: 14px;
+  margin-top: 10px;
+  padding-top: 4px;
+  border-top: 1px solid var(--black);
+}
+
+/* end cards */
