@@ -172,6 +172,7 @@ body {
   padding: 32px 40px 36px 40px;
   background-color: white;
   border-top: 1px solid var(--black);
+  width: 100%;
 }
 
 .sidebar .menu .akun .profil,
@@ -335,6 +336,7 @@ body {
   background-color: #008ef8;
   padding: 0.75rem 1rem;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .wrapper-main .wrapper-table .main {
@@ -369,13 +371,14 @@ body {
 .wrapper-main .wrapper-table .main .pagination {
   align-self: flex-end;
   display: flex;
-  gap: 1px;
+  gap: 1.5px;
 }
-.wrapper-main .wrapper-table .main .pagination a {
+.wrapper-main .wrapper-table .main .pagination button {
   text-decoration: none;
   color: var(--black);
   padding: 0.5rem 1rem;
   border: 1px solid var(--black);
+  cursor: pointer;
 }
 .wrapper-main .wrapper-table .main .pagination .prev {
   border-radius: 10px 0 0 10px;

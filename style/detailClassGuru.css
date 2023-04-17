@@ -173,6 +173,7 @@ body {
   padding: 32px 40px 36px 40px;
   background-color: white;
   border-top: 1px solid var(--black);
+  width: 100%;
 }
 
 .sidebar .menu .akun .profil,
@@ -189,84 +190,6 @@ body {
 }
 
 /* end sidebar */
-
-/* modal box */
-.wrapper-modal {
-  position: fixed;
-  background-color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid var(--black);
-  border-radius: 32px;
-  width: 400px;
-  display: none;
-}
-
-.wrapper-modal.active {
-  display: block;
-}
-
-.filter-background {
-  background-color: rgba(0, 0, 0, 0.342);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: none;
-}
-
-.wrapper-modal .top {
-  display: flex;
-  justify-content: center;
-  padding: 24px;
-  border-bottom: 1px solid var(--black);
-}
-
-.wrapper-modal .top h1 {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--black);
-}
-
-.wrapper-modal .top .close {
-  position: absolute;
-  top: 24px;
-  right: 40px;
-  cursor: pointer;
-}
-
-.wrapper-modal .content {
-  padding: 32px 40px 40px 40px;
-}
-
-.wrapper-modal .content h3 {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--black);
-}
-
-.wrapper-modal .content input {
-  all: unset;
-  border: 1px solid var(--black);
-  border-radius: 10px;
-  padding: 12px 24px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 24px;
-  margin-bottom: 16px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.wrapper-modal .content p {
-  font-size: 14px;
-  font-weight: 400;
-  color: #656565;
-}
-
-/* end modal */
 
 /* main */
 .wrapper-main {
@@ -393,6 +316,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  position: relative;
 }
 
 .wrapper-main .wrapper-forum .forum h3 {
@@ -411,7 +335,7 @@ body {
   gap: 16px;
 }
 
-.wrapper-main .wrapper-forum .forum button {
+.wrapper-main .wrapper-forum .forum .button button {
   all: unset;
   font-size: 16px;
   font-weight: 500;
@@ -423,10 +347,67 @@ body {
   display: flex;
   justify-content: center;
 }
-.wrapper-main .wrapper-forum .forum .more {
+.wrapper-main .wrapper-forum .forum .button .delete {
   padding: 0.5rem 0.5rem;
   display: flex;
   justify-content: center;
+  background-color: #c53535;
 }
+
+/* modal box */
+.wrapper-modal {
+  position: fixed;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  padding: 2rem;
+  /* width: 400px; */
+  display: none;
+  z-index: 2;
+}
+
+.filter-background {
+  background-color: rgba(0, 0, 0, 0.342);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 2;
+}
+
+.wrapper-modal.active {
+  display: block;
+}
+
+.wrapper-modal .button {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.wrapper-modal .button button {
+  all: unset;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.wrapper-modal .button button.no {
+  background: #439916;
+}
+.wrapper-modal .button button.yes {
+  /* background: #c53535; */
+  color: #c53535;
+  font-weight: 600;
+  border: 1px solid #c53535;
+}
+
+/* end modal */
 
 /* end main */
