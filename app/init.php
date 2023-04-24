@@ -2,10 +2,11 @@
 
 require_once 'controllers/Controller.php';
 require_once 'config/config.php';
+require_once 'database/database.php';
 
 class App {
 
-    protected $controller = 'Home';
+    protected $controller = 'HomeController';
     protected $method = 'index';
     protected $params = [];
 
@@ -14,9 +15,11 @@ class App {
         $url = $this->parseURL();
         
         /* Controller Init */
-        if (file_exists('app/controllers/' . $url[0] . '.php')) {
-            $this->controller = $url[0];
-            unset($url[0]);
+        if (!empty($url)) {
+            if (file_exists('app/controllers/' . $url[0] . 'controller.php')) {
+                $this->controller = $url[0] . 'controller';
+                unset($url[0]);
+            }
         }
         
         require_once 'app/controllers/' . $this->controller . '.php';

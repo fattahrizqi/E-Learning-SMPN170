@@ -19,7 +19,7 @@
           <div class="right">
               <a href="<?= BASEURL ?>" <?php if($data['title'] === 'Home'){ echo "class='active'"; } ?>>Beranda</a>
               <a href="<?= BASEURL ?>about" <?php if($data['title'] === 'Profil'){ echo "class='active'"; } ?>>Profil</a>
-              <a href="login.html" <?php if($data['title'] === 'Login' || $data['title'] === 'Register'){ echo "class='active'"; } ?>>Masuk/Daftar</a>
+              <a href="<?= BASEURL ?>login" <?php if($data['title'] === 'Login' || $data['title'] === 'Register'){ echo "class='active'"; } ?>>Masuk/Daftar</a>
           </div>
     </div>
     <div class="container">
