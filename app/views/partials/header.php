@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASEURL ?>style/<?= $data['style'] ?>.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>style/flasher.css">
 </head>
 <body>
     <div class="topbar">

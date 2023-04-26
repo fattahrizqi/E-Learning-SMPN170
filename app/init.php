@@ -3,6 +3,15 @@
 require_once 'controllers/Controller.php';
 require_once 'config/config.php';
 require_once 'database/database.php';
+// middleware
+require_once 'middlewares/AuthMiddleware.php';
+
+// helpers
+spl_autoload_register(function( $class ){
+    $class = explode('\\', $class);
+    $class = end($class);
+    require_once __DIR__ . '/helpers/' . $class . '.php';
+});
 
 class App {
 
