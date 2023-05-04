@@ -13,40 +13,31 @@
                 <!-- <div class="wrapper-emptyClass">
                     <p>Tidak ada kelas !</p>
                 </div> -->
-
-                <!-- if menu = 1 -->
-                <div class="wrapper-kelas">
-                    <a href="#" class="kelas">
-                        <div class="inisial">P</div>
-                        <h3 class="title">Prakarya <?= $_SESSION['role'] === 'guru' ? '<span>7A</span>' : '' ?></h3>
-                    </a>
-                    <a href="#" class="kelas">
-                        <div class="inisial">P</div>
-                        <h3 class="title">Prakarya <?= $_SESSION['role'] === 'guru' ? '<span>7B</span>' : '' ?></h3>
-                    </a>
-                    <a href="#" class="kelas">
-                        <div class="inisial">P</div>
-                        <h3 class="title">Prakarya <?= $_SESSION['role'] === 'guru' ? '<span>7C</span>' : '' ?></h3>
-                    </a>
-                    <a href="#" class="kelas">
-                        <div class="inisial">S</div>
-                        <h3 class="title">Seni budaya <?= $_SESSION['role'] === 'guru' ? '<span>7A</span>' : '' ?></h3>
-                    </a>
-                    <a href="#" class="kelas">
-                        <div class="inisial">S</div>
-                        <h3 class="title">Seni budaya <?= $_SESSION['role'] === 'guru' ? '<span>7B</span>' : '' ?></h3>
-                    </a>
-
-                </div>
+                <?php if ( empty($data['class']) ) { ?>
+                    <div class="wrapper-emptyClass">
+                        <p>Tidak ada kelas !</p>
+                    </div>
+                <?php } elseif ( !empty($data['class']) ) { ?>
+                    <div class="wrapper-kelas">
+                        <?php foreach ($data['class'] as $class) :?>
+                            <a href="<?= BASEURL ?>class/dc/<?= $class['code'] ?>-<?= App\helpers\Unique::generate(12) ?>" class="kelas">
+                                <div class="inisial">S</div>
+                                <h3 class="title"><?= $class['subject'] ?> <?= $_SESSION['role'] === 'guru' ? '<span>' . $class['grade'] . '</span>' : '' ?></h3>
+                            </a>
+                        <?php endforeach ?>
+                    </div>
+                <?php } ?>
                 <div class="akun">
                     <a href="#" class="profil">
                         <img src="<?= BASEURL ?>asset/user.svg" class="icon">
-                        <h3>Nickymicko Ayub</h3>
+                        <h3><?= $data['user']['name'] ?></h3>
                     </a>
-                    <a href="<?= BASEURL ?>login/logout" class="logout">
+                    <form action="<?= BASEURL ?>login/l" method="post" class="logout">
+                        <button type="submit" style="all:unset;display:flex;cursor:pointer;gap:1rem;">
                         <img src="<?= BASEURL ?>asset/sign-out.svg" class="icon">
                         <h3>Logout</h3>
-                    </a>
+                        </button>
+                    </form>
                 </div>
             </div>
         </nav>

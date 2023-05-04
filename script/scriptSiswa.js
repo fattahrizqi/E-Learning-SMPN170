@@ -31,9 +31,23 @@ function hideModal() {
   filterBackground.style.display = "none";
 }
 
+// modal user create
+const modal1 = document.querySelector(".wrapper-modal1");
+
+function showSecondModal() {
+  modal1.classList.add("active");
+  filterBackground.style.display = "block";
+}
+
+function hideSecondModal() {
+  modal1.classList.remove("active");
+  filterBackground.style.display = "none";
+}
+
 document.addEventListener("mouseup", function (event) {
-  if (!modal.contains(event.target)) {
+  if (!modal.contains(event.target) && !modal1.contains(event.target)) {
     hideModal();
+    hideSecondModal();
   }
 });
 
@@ -63,3 +77,19 @@ function scrollHere(e) {
     }
   });
 }
+
+// Add event listener to the form
+document.getElementById("modalForm").addEventListener("keyup", function (event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    document.getElementById("submitBtn").click();
+  }
+});
+
+// Add event listener to the form
+// document.getElementById("search").addEventListener("keyup", function (event) {
+//   event.preventDefault();
+//   if (event.keyCode === 13) {
+//     document.getElementById("submitBtn").click();
+//   }
+// });

@@ -13,24 +13,4 @@
 </head>
 <body>
     <div class="container">
-        <div class="topbar">
-            <div class="left">
-                <img class="hamburger" src="<?= BASEURL ?>asset/list.svg" onclick="showSidebar()"></img>
-                <?php if ($_SESSION['role'] === 'admin') { ?>
-                    <a href="<?= BASEURL ?>dashboard/" class="title">Dashboard</a>
-                <?php } else { ?>
-                    <a href="<?= BASEURL ?>class/" class="title">SMPN 170</a>
-                <?php } ?>
-            </div>
-            <?php if($_SESSION['role'] === 'siswa') { ?>
-            <div onclick="showModal()" class="right">
-                <h3>Gabung kelas</h3>
-                <img src="<?= BASEURL ?>asset/plus.svg">
-            </div>
-            <?php } elseif ($_SESSION['role'] === 'guru') { ?>
-            <div onclick="showModal()" class="right">
-                <h3>Buat kelas</h3>
-                <img src="../asset/plus.svg">
-            </div>
-            <?php } ?>
-        </div>
+        

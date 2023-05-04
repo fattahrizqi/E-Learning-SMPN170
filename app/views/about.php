@@ -2,7 +2,7 @@
       <div class="wrapper-hero">
         <h1 class="title">Tentang<br>SMP Negeri 170 Jakarta</h1>
         <p class="desc">Jl. Kepu No.17, RT.1/RW.1, Pegangsaan Dua, Kec. Klp. Gading, Jakarta Utara, Daerah Khusus Ibukota Jakarta 14250</p>
-        <p class="cs">CS: (021) 4602817 | Email: -</p>
+        <p class="cs">CS: (021) 4602817 | Email: sertupoeljakarta@yahoo.co.id</p>
       </div>
 
       <div class="wrapper-visimisi">

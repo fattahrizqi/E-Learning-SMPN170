@@ -14,8 +14,13 @@ class AuthMiddleware {
   public static function guest()
   {
     if (isset($_SESSION['user_id'])) {
-        header('Location: ' . BASEURL . 'class');
-        exit();
+        if ($_SESSION['user_id'] !== 'admin') {
+          header('Location: ' . BASEURL . 'class');
+          exit();
+        } else {
+          header('Location: ' . BASEURL . 'dashboard');
+          exit();
+        }
     }
   }
 
@@ -29,8 +34,10 @@ class AuthMiddleware {
 
   public static function isUser()
   {
-    if ($_SESSION['role'] !== 'siswa' || $_SESSION['role'] !== 'guru') {
+    if ($_SESSION['role'] === 'admin') {
         header('Location: ' . BASEURL . 'dashboard');
+        exit();
     }
   }
+  
 }

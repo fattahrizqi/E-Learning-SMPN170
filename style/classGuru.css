@@ -286,7 +286,7 @@ body {
   padding: 0.5rem 3rem;
 }
 
-/* .wrapper-modal .content input {
+.wrapper-modal .content input {
   all: unset;
   border: 1px solid var(--black);
   border-radius: 10px;
@@ -297,7 +297,7 @@ body {
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: 600;
-} */
+}
 
 /* end modal */
 

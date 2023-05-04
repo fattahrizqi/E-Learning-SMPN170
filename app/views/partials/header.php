@@ -20,7 +20,11 @@
           <div class="right">
               <a href="<?= BASEURL ?>" <?php if($data['title'] === 'Home'){ echo "class='active'"; } ?>>Beranda</a>
               <a href="<?= BASEURL ?>about" <?php if($data['title'] === 'Profil'){ echo "class='active'"; } ?>>Profil</a>
-              <a href="<?= BASEURL ?>login" <?php if($data['title'] === 'Login' || $data['title'] === 'Register'){ echo "class='active'"; } ?>>Masuk/Daftar</a>
+              <?php if (!isset($_SESSION['user_id'])) : ?>
+                <a href="<?= BASEURL ?>login" <?php if($data['title'] === 'Login' || $data['title'] === 'Register'){ echo "class='active'"; } ?>>Masuk/Daftar</a>
+            <?php else : ?>
+                <a href="<?= BASEURL ?>class" >E-Learning</a>
+            <?php endif ?>
           </div>
     </div>
     <div class="container">

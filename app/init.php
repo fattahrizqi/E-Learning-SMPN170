@@ -6,6 +6,9 @@ require_once 'database/database.php';
 // middleware
 require_once 'middlewares/AuthMiddleware.php';
 
+// vendor
+require 'vendor/autoload.php';
+
 // helpers
 spl_autoload_register(function( $class ){
     $class = explode('\\', $class);

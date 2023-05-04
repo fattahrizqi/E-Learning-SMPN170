@@ -2,16 +2,14 @@
 
 use App\helpers\Flasher as Flasher;
 use App\middlewares\AuthMiddleware as Auth;
+use App\helpers\Request as Request;
 
 class LoginController extends Controller {
-    
-    public function __construct()
-    {
-        Auth::guest();
-    }
 
     public function index()
     {
+        Auth::guest();
+        
         $data['style'] = 'login';
         $data['title'] = 'Login';
 
@@ -21,6 +19,9 @@ class LoginController extends Controller {
 
     public function authenticate()
     {
+        // checking HTTP method
+        Request::requestMethod();
+
         $email = $_POST['email'];
         $password = $_POST['password'];
         
@@ -45,8 +46,11 @@ class LoginController extends Controller {
     }
 
     // Logout action
-    public function logout()
+    public function l()
     {
+        // checking HTTP method
+        Request::requestMethod();
+        
         // Destroy the user session
         session_start();
         session_unset();

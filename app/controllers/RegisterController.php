@@ -2,11 +2,15 @@
 
 use App\helpers\Flasher as Flasher;
 use App\helpers\Validator as Validator;
+use App\middlewares\AuthMiddleware as Auth;
+use App\helpers\Request as Request;
 
 class RegisterController extends Controller{
 
     public function index()
     {
+        Auth::guest();
+
         $data['style'] = 'signin';
         $data['title'] = 'Register';
 
@@ -19,6 +23,8 @@ class RegisterController extends Controller{
 
     public function store()
     {
+        // HTTP method check
+        Request::requestMethod();
         
         $validator = new Validator();
         $errors = $validator->registerValidate($_POST);
@@ -41,7 +47,8 @@ class RegisterController extends Controller{
             exit;
         } else {
             $user_id = $this->model('User_model')->createUser($_POST);
-            if ($user_id) {
+            $createProfile = $this->model('User_model')->createProfile($_POST);
+            if ($user_id && $createProfile) {
                 Flasher::setFlash('success', 'Register successful! now sign in your account');
                 header('Location: ' . BASEURL . 'login');
                 exit();

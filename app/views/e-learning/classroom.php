@@ -7,9 +7,12 @@
                 <img src="<?= BASEURL ?>asset/x.svg" onclick="hideModal()" class="close">
             </div>
             <div class="content">
-                <h3>Mintalah kode kelas kepada guru, lalu masukan di sini!</h3>
-                <input type="text" placeholder="31XXXXXX">
-                <p>*Gunakan kode kelas yang terdiri dari 6-8 huruf atau angka, tanpa spasi atau simbol</p>
+                <form action="<?= BASEURL ?>class/jc/" method="post" id="modalForm">
+                    <h3>Mintalah kode kelas kepada guru, lalu masukan di sini!</h3>
+                    <input type="text" name="code" placeholder="31XXXXXX">
+                    <p>*Gunakan kode kelas yang terdiri dari 6-8 huruf atau angka, tanpa spasi atau simbol</p>
+                    <button type="submit" id="modalSubmit"></button>
+                </form>
             </div>
         </div>
         <?php } elseif ($_SESSION['role'] === 'guru') { ?>
@@ -19,22 +22,22 @@
                 <img src="<?= BASEURL ?>asset/x.svg" onclick="hideModal()" class="close">
             </div>
             <div class="content">
-                <form action="">
+                <form action="<?= BASEURL ?>class/c" method="post">
                     <div class="mapel">
                         <img src="<?= BASEURL ?>asset/caret-down-fill.svg" class="caret"></img>
-                        <select id="mapel" name="mapel">
+                        <select id="mapel" name="subject">
                             <option hidden>Mata pelajaran</option>
-                            <option value="matematika">Matematika</option>
-                            <option value="ipa">IPA</option>
-                            <option value="ips">IPS</option>
-                            <option value="bahasa">Bahasa indonesia</option>
-                            <option value="inggris">Bahasa inggris</option>
-                            <option value="pjok">PJOK</option>
-                            <option value="ppkn">PPKN</option>
-                            <option value="islam">Agama islam</option>
-                            <option value="kristen">Agama kristen</option>
-                            <option value="prakarya">Prakarya</option>
-                            <option value="senibudaya">Seni budaya</option>
+                            <option value="MTK">Matematika</option>
+                            <option value="IPA">IPA</option>
+                            <option value="IPS">IPS</option>
+                            <option value="Bahasa Indonesia">Bahasa indonesia</option>
+                            <option value="Bahasa Inggris">Bahasa inggris</option>
+                            <option value="PJOK">PJOK</option>
+                            <option value="PPKN">PPKN</option>
+                            <option value="PAI">Agama islam</option>
+                            <option value="PAK">Agama kristen</option>
+                            <option value="Prakarya">Prakarya</option>
+                            <option value="Seni Budaya">Seni budaya</option>
                         </select>
                     </div>
                     <div class="kelas">
@@ -50,108 +53,54 @@
                         <img src="<?= BASEURL ?>asset/caret-down-fill.svg" class="caret"></img>
                         <select id="abjad" name="abjad">
                             <option hidden>Abjad kelas</option>
-                            <option value="a">A</option>
-                            <option value="b">B</option>
-                            <option value="c">C</option>
-                            <option value="d">D</option>
-                            <option value="e">E</option>
-                            <option value="f">F</option>
-                            <option value="g">G</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
                         </select>
                     </div>
                     
-                    <button>Buat</button>
+                    <button type="submit">Buat</button>
                 </form>
             </div>
         </div>
         <?php } ?>
 
-        <!-- if class = 0 -->
-        <!-- <div class="wrapper-emptyCard">
-            <img src="../>asset/cart is empty.png">
-            <h3>Kamu belum bergabung dengan kelas apapun.</br>Kontak gurumu untuk mendapatkan kode referensi</h3>
-            <button onclick="showModal()">Gabung +</button>
-        </div> -->
+        <div class="wrapper-modal1"></div>
 
-        <!-- if class = 1 -->
         <div class="flash" style="bottom:0;position:absolute;margin-left:10px;margin-bottom:10px;">
             <?php App\helpers\Flasher::flash() ?>
         </div>
-        <div class="wrapper-cards">
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <?= $_SESSION['role'] === 'guru' ? '<h3 class="kelas">7A</h3>' : '' ?>
-                    <h1 class="mapel">MTK</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
+        <?php if ( empty($data['class']) ) { ?>
+            <div class="wrapper-emptyCard">
+                <img src="<?= BASEURL ?>asset/cart is empty.png">
+                <?php if ($_SESSION['role'] === 'siswa') { ?>
+                    <h3>Kamu belum bergabung dengan kelas apapun.</br>Kontak gurumu untuk mendapatkan kode referensi</h3>
+                    <button onclick="showModal()">Gabung +</button>
+                <?php } else { ?>
+                    <h3>Oops, anda belum membuat kelas apapun.</br>Silahkan buat kelas dan invite siswa siswi untuk masuk. </h3>
+                    <button onclick="showModal()">Buat kelas +</button>
+                <?php } ?>
             </div>
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <h1 class="mapel">Bahasa Indonesia</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
+        <?php } elseif ( !empty($data['class']) ) { ?>
+            <div class="wrapper-cards">
+                <?php foreach ($data['class'] as $class) : ?>
+                    <div onclick="location.href='<?= BASEURL ?>class/dc/<?= $class['code'] ?>-<?= App\helpers\Unique::generate(12) ?>'" class="card">
+                        <div class="image">
+                            <img src="<?= BASEURL ?>asset/<?= $class['pict'] ?>">
+                        </div>
+                        <div class="content">
+                            <?= $_SESSION['role'] === 'guru' ? '<h3 class="kelas">'. $class['grade'] .'</h3>' : '' ?>
+                            <h1 class="mapel"><?= $class['subject'] ?></h1>
+                            <p class="creator"><?= $class['name'] ?></p>
+                        </div>
+                    </div>
+                <?php endforeach ?>
             </div>
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <h1 class="mapel">MTK</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
-            </div>
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <h1 class="mapel">Bahasa Indonesia</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
-            </div>
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <h1 class="mapel">MTK</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
-            </div>
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <h1 class="mapel">MTK</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
-            </div>
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <h1 class="mapel">MTK</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
-            </div>
-            <div onclick="location.href='detailClassSiswa.html'" class="card">
-                <div class="image">
-                    <img src="<?= BASEURL ?>asset/mtk.png">
-                </div>
-                <div class="content">
-                    <h1 class="mapel">MTK</h1>
-                    <p class="creator">Abdul Mahfud </p>
-                </div>
-            </div>
-        </div>
+        <?php } ?>
     </div>
     
     <script src="<?= BASEURL ?>script/scriptSiswa.js"></script>

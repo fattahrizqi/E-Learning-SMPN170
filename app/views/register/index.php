@@ -5,7 +5,7 @@
           <input name="name" type="name" placeholder="Nama" required value="<?= isset($_SESSION['old']['name']) ? $_SESSION['old']['name'] : '' ?>" >
           <?= isset($_SESSION['errors']['name']) ? '<sup style="float:left;color:red;">' . $_SESSION['errors']['name'] . '</sup>' : '' ?>
 
-          <input name="noinduk" type="noinduk" placeholder="NIP/NIK/NISN" required value="<?= isset($_SESSION['old']['noinduk']) ? $_SESSION['old']['noinduk'] : '' ?>" >
+          <input name="noinduk" type="noinduk" placeholder="NIP/NISN" required value="<?= isset($_SESSION['old']['noinduk']) ? $_SESSION['old']['noinduk'] : '' ?>" >
           <?= isset($_SESSION['errors']['noinduk']) ? '<sup style="float:left;color:red;">' . $_SESSION['errors']['noinduk'] . '</sup>' : '' ?>
 
           <input name="email" type="email" placeholder="Email address" required value="<?= isset($_SESSION['old']['email']) ? $_SESSION['old']['email'] : '' ?>" >

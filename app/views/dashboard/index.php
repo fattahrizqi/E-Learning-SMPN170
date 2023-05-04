@@ -1,67 +1,26 @@
-
-        <nav class="sidebar">
-            <div class="title">
-                <div class="left">
-                    <img src="<?= BASEURL ?>asset/house-fill.svg">
-                    <h3>Kelas</h3>
-                </div>
-                <div class="close" onclick="hideSidebar()">
-                    <img src="<?= BASEURL ?>asset/x-bold.svg">
-                </div>
-            </div>
-            <div class="menu">
-                <div class="wrapper-kelas">
-                    <a href="#" class="kelas">
-                        <div class="inisial">D</div>
-                        <h3 class="title">Dashboard</h3>
-                    </a>
-                    <a href="dataAkunAdmin.html" class="kelas">
-                        <div class="inisial">D</div>
-                        <h3 class="title">Data Akun</h3>
-                    </a>
-                    <a href="#" class="kelas">
-                        <div class="inisial">D</div>
-                        <h3 class="title">Data Kelas</h3>
-                    </a>
-                    <a href="#" class="kelas">
-                        <div class="inisial">R</div>
-                        <h3 class="title">Role</h3>
-                    </a>
-
-                </div>
-                <div class="akun">
-                    <a href="#" class="profil">
-                        <img src="<?= BASEURL ?>asset/user.svg" class="icon">
-                        <h3>Admin</h3>
-                    </a>
-                    <a href="#" class="logout">
-                        <img src="<?= BASEURL ?>asset/sign-out.svg" class="icon">
-                        <h3>Logout</h3>
-                    </a>
-                </div>
-            </div>
-        </nav>
-
         <div class="filter-background"></div>
 
+        <div class="flash" style="bottom:0;position:absolute;margin-left:10px;margin-bottom:10px;">
+            <?php App\helpers\Flasher::flash() ?>
+        </div>
         <!-- main -->
         <div class="wrapper-main">
           <!-- grid -->
           <div class="card-top siswa">
-            <p>PESERTA DIDIK LAKI-LAKI</p>
-            <h3>330</h3>
+            <p>AKUN PESERTA DIDIK LAKI-LAKI</p>
+            <h3><?= count($data['L']) ?></h3>
           </div>
           <div class="card-top siswi">
-            <p>PESERTA DIDIK PEREMPUAN</p>
-            <h3>366</h3>
+            <p>AKUN PESERTA DIDIK PEREMPUAN</p>
+            <h3><?= count($data['P']) ?></h3>
           </div>
           <div class="card-top pendidik">
             <p>TENAGA PENDIDIK</p>
-            <h3>33</h3>
+            <h3><?= count($data['teacher']) ?></h3>
           </div>
           <div class="card-top administrasi">
             <p>TENAGA ADMINISTRASI</p>
-            <h3>10</h3>
+            <h3><?= count($data['admin']) ?></h3>
           </div>
           <div class="main">
             <h3>E-Learning System</h3>
