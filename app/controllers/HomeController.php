@@ -8,6 +8,6 @@ class HomeController extends Controller {
 
         $this->view('partials/header', $data);
         $this->view('home');
-        $this->view('partials/footer');
+        $this->view('partials/footerHome');
     }
 }

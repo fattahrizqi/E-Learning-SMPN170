@@ -8,6 +8,6 @@ class AboutController extends Controller {
 
         $this->view('partials/header', $data);
         $this->view('about');
-        $this->view('partials/footer');
+        $this->view('partials/footerHome');
     }
 }

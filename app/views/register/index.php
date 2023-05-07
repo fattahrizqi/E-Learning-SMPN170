@@ -26,6 +26,6 @@
       </div>
     </div>
     
-    <script src="../script/scriptSiswa.js"></script>
+    <script src="script/scriptHome.js"></script>
 </body> 
 </html>

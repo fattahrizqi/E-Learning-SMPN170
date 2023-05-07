@@ -16,7 +16,9 @@ body {
 /* topbar */
 .topbar {
   background-color: white;
-  border-bottom: 1px solid var(--black);
+  /* border-bottom: 1px solid var(--black); */
+  box-shadow: 0px -0.6px 2.3px rgba(0, 0, 0, 0.006), 0px 1.2px 5.6px rgba(0, 0, 0, 0.008), 0px 5.9px 10.5px rgba(0, 0, 0, 0.01), 0px 14.3px 18.8px rgba(0, 0, 0, 0.012), 0px 28.8px 35.1px rgba(0, 0, 0, 0.014),
+    0px 62px 84px rgba(0, 0, 0, 0.02);
   display: flex;
   justify-content: space-between;
   padding: 1.5rem 3rem;
@@ -290,6 +292,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-width: 300px;
+  align-self: flex-start;
 }
 
 .wrapper-main .card .title {
@@ -310,9 +313,12 @@ body {
 }
 
 /* main */
-.wrapper-main .main {
-  display: flex;
-  flex-direction: column;
+.wrapper-main {
+  flex-direction: row;
+}
+
+.wrapper-main .main{
+  width: 100%;
 }
 
 .wrapper-main .main .title {
@@ -326,6 +332,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-height: 250px;
+  justify-content: space-between;
+}
+
+.wrapper-main .main .content .desc {
+  word-wrap: break-word;
 }
 
 .wrapper-main .main .content .file {
@@ -353,3 +365,25 @@ body {
 }
 
 /* end wrapper main */
+
+/* responsive */
+@media screen and (max-width: 1000px){
+  .wrapper-main {
+    flex-direction: column;
+  }
+  .wrapper-main .card{
+    width: 100%;
+    min-width: none;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 600px){
+  .wrapper-main{
+    padding: 8rem 3rem;
+  }
+}
+@media screen and (max-width: 400px){
+  .wrapper-main{
+    padding: 8rem 1rem;
+  }
+}

@@ -45,7 +45,7 @@
                 <h3><?= $data['detail_class']['name'] ?></h3>
               </div>
               
-              <div class="wyswyg" style="min-height: 600px;">
+              <div class="wyswyg">
                 <form action="<?= BASEURL ?>class/ps" method="post" enctype="multipart/form-data">
                   <input type="text" name="title" id="title" placeholder="title">
                   <input type="hidden" name="class_id" value="<?= $data['detail_class']['id'] ?>">
@@ -58,14 +58,14 @@
                       <option value="tugas">Tugas</option>
                     </select>
                   <?php endif ?>
-                  <textarea name="description" id="editor">
-                      <p>Ketik deskripsi...</p>
+                  <textarea name="description" id="editor" placeholder="Ketik deskripsi..">
                   </textarea>
-                  <div class="button">
+              </div>
+              
+                  <div class="button btn-post">
                     <button class="yes" type="submit">Post</button>
                   </div>
                 </form>
-              </div>
 
               <div class="forums">
                     <?php $i = 1; ?>

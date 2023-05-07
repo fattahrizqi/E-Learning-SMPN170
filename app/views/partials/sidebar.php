@@ -21,7 +21,7 @@
                     <div class="wrapper-kelas">
                         <?php foreach ($data['class'] as $class) :?>
                             <a href="<?= BASEURL ?>class/dc/<?= $class['code'] ?>-<?= App\helpers\Unique::generate(12) ?>" class="kelas">
-                                <div class="inisial">S</div>
+                                <div class="inisial"><?= $class['subject'][0]?></div>
                                 <h3 class="title"><?= $class['subject'] ?> <?= $_SESSION['role'] === 'guru' ? '<span>' . $class['grade'] . '</span>' : '' ?></h3>
                             </a>
                         <?php endforeach ?>

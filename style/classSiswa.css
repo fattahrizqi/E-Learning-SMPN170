@@ -16,7 +16,9 @@ body {
 /* topbar */
 .topbar {
   background-color: white;
-  border-bottom: 1px solid var(--black);
+  /* border-bottom: 1px solid var(--black); */
+  box-shadow: 0px -0.6px 2.3px rgba(0, 0, 0, 0.006), 0px 1.2px 5.6px rgba(0, 0, 0, 0.008), 0px 5.9px 10.5px rgba(0, 0, 0, 0.01), 0px 14.3px 18.8px rgba(0, 0, 0, 0.012), 0px 28.8px 35.1px rgba(0, 0, 0, 0.014),
+    0px 62px 84px rgba(0, 0, 0, 0.02);
   display: flex;
   justify-content: space-between;
   padding: 1.5rem 3rem;
@@ -319,6 +321,10 @@ body {
   /* gap: 16px; */
 }
 
+.wrapper-cards .card:hover {
+  box-shadow: 0px 0px 2.2px rgba(0, 0, 0, 0.014), 0px 0px 5.3px rgba(0, 0, 0, 0.02), 0px 0px 10px rgba(0, 0, 0, 0.025), 0px 0px 17.9px rgba(0, 0, 0, 0.03), 0px 0px 33.4px rgba(0, 0, 0, 0.036), 0px 0px 80px rgba(0, 0, 0, 0.05);
+}
+
 .wrapper-cards .card .image {
   flex: 1.2;
   height: 100%;
@@ -356,3 +362,185 @@ body {
 }
 
 /* end cards */
+
+/* responsive */
+@media screen and (max-width: 785px) {
+  .wrapper-cards {
+    padding: 8rem 4rem 3rem 4rem;
+    gap: 24px;
+  }
+
+  .wrapper-cards .card {
+    display: flex;
+    width: 47%;
+    max-width: none;
+    max-height: 200px;
+  }
+  .wrapper-cards .card .content .mapel {
+    font-size: 20px;
+  }
+
+  .wrapper-cards .card .content .creator {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  /* sidebar */
+  .sidebar {
+    min-width: 300px;
+    height: 100vh;
+  }
+
+  .sidebar .title {
+    padding: 32px 30px 24px 30px;
+  }
+
+  .sidebar .title .left {
+    gap: 24px;
+  }
+
+  .sidebar .title .left h3 {
+    font-size: 24px;
+  }
+
+  /* empty class */
+  .wrapper-emptyClass {
+    font-size: 18px;
+    width: max-content;
+    margin: 3rem auto;
+    color: var(--black);
+  }
+  /* end empty class */
+
+  .sidebar .menu .wrapper-kelas {
+    gap: 12px;
+    /* padding: 30px; */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .sidebar .menu .kelas {
+    gap: 12px;
+  }
+
+  .sidebar .menu .kelas .inisial {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sidebar .menu .kelas .title {
+    all: unset;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .sidebar .menu .akun {
+    gap: 24px;
+    padding: 24px 30px 32px 30px;
+  }
+
+  .sidebar .menu .akun .profil,
+  .sidebar .menu .akun .logout {
+    gap: 12px;
+    align-items: center;
+  }
+
+  .sidebar .menu .akun h3 {
+    font-size: 16px;
+  }
+  /* end sidebar */
+
+  .topbar .right h3 {
+    display: none;
+  }
+
+  .wrapper-cards {
+    padding: 8rem 3rem 3rem 3rem;
+    gap: 24px;
+  }
+
+  .wrapper-cards .card {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    max-height: 200px;
+  }
+  .wrapper-cards .card .content .mapel {
+    font-size: 26px;
+  }
+
+  .wrapper-cards .card .content .creator {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper-modal {
+    position: fixed;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--black);
+    border-radius: 24px;
+    width: 300px;
+    display: none;
+  }
+
+  .wrapper-modal .top {
+    padding: 16px;
+  }
+
+  .wrapper-modal .top h1 {
+    font-size: 20px;
+  }
+
+  .wrapper-modal .top .close {
+    top: 16px;
+    right: 24px;
+  }
+
+  .wrapper-modal .content {
+    padding: 24px 24px 36px 24px;
+  }
+
+  .wrapper-modal .content h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .wrapper-modal .content input {
+    all: unset;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    padding: 10px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .wrapper-modal .content p {
+    font-size: 13px;
+    font-weight: 400;
+    color: #656565;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wrapper-cards {
+    padding: 7rem 1rem 3rem 1rem;
+    gap: 24px;
+  }
+
+  .wrapper-cards .card {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    max-height: 180px;
+  }
+}

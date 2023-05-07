@@ -281,7 +281,7 @@ body {
   margin-top: 75px;
   display: flex;
   padding: 3rem 5rem;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 /* daftar tugas */
@@ -292,6 +292,8 @@ body {
   gap: 32px;
   background: white;
   width: max-content;
+  max-width: 200px;
+
   /* background: skyblue; */
   /* padding: 3rem; */
 }
@@ -379,8 +381,8 @@ body {
 
 .main .wrapper-cards .card {
   border: 1px solid var(--black);
-  width: 300px;
-  max-height: 240px;
+  width: 280px;
+  min-height: 240px;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -411,6 +413,7 @@ body {
   flex-direction: column;
   min-height: 150px;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .main .wrapper-cards .card .content .file {
@@ -425,6 +428,7 @@ body {
   background: #f2f2f2;
   padding: 0.5rem 1rem;
   border-radius: 10px;
+  overflow: auto;
 }
 
 .main .wrapper-cards .card .content .status {
@@ -433,3 +437,145 @@ body {
 }
 
 /* end main */
+
+/* responsive */
+@media screen and (max-width: 1000px){
+  .wrapper-main{
+    flex-direction: column;
+  }
+  .daftar-tugas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    background: white;
+    width: 100%;
+    max-width: none;
+  }
+  .daftar-tugas .title h1 {
+    font-size: 24px;
+  }
+  .daftar-tugas .wrapper-tugas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+    max-height: 400px;
+    overflow: auto
+  }
+
+  .main .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .main .title h1 {
+    font-size: 24px;
+  }
+  
+  .main .title .wrapper-filter form {
+    gap: 24px;
+  }
+  .main .title .wrapper-filter form select {
+    border-radius: 5px;
+    padding: 0.5rem 3rem 0.5rem 1rem;
+  }
+  .caret {
+    top: 8px;
+    right: 16px;
+  }
+  
+}
+
+@media screen and (max-width: 800px){
+  .wrapper-main{
+    padding: 3rem 3rem;
+  }
+  .main .wrapper-cards {
+    gap: 20px;
+  }
+  
+  .main .wrapper-cards .card {
+    width: 240px;
+  }
+  
+  .main .wrapper-cards .card .top {
+    padding: 0.5rem 1rem;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .main .wrapper-cards .card .top h3 {
+    font-size: 18px;
+  }
+  .main .wrapper-cards .card .top button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+  .main .wrapper-cards .card .top button img{
+    width: 100%;
+    height: 100%;
+  }
+  .main .wrapper-cards .card .content {
+    padding: 1rem;
+    min-height: 150px;
+  }
+  
+  .main .wrapper-cards .card .content .file {
+    gap: 16px;
+  }
+  
+  .main .wrapper-cards .card .content .file a {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 14px
+  }
+}
+
+@media screen and (max-width: 600px){
+  
+  .wrapper-main{
+    padding: 3rem 3rem;
+  }
+  .main .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: unset;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .main .wrapper-cards {
+    gap: 20px;
+  }
+  .main .wrapper-cards .card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .topbar .left {
+    gap: 12px;
+  }
+  .topbar .left .title {
+    font-size: 16px;
+  }
+  .topbar .right {
+    gap: 10px;
+    padding-right: 0rem;
+  }
+
+  .topbar .right a {
+    font-size: 14px;
+  }  
+}
+
+@media screen and (max-width: 400px){    
+  .wrapper-main{
+    padding: 3rem 1rem;
+  }
+}

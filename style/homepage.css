@@ -16,7 +16,9 @@ body {
 /* topbar */
 .topbar {
   background-color: white;
-  border-bottom: 1px solid var(--black);
+  /* border-bottom: 1px solid var(--black); */
+  box-shadow: 0px -0.6px 2.3px rgba(0, 0, 0, 0.006), 0px 1.2px 5.6px rgba(0, 0, 0, 0.008), 0px 5.9px 10.5px rgba(0, 0, 0, 0.01), 0px 14.3px 18.8px rgba(0, 0, 0, 0.012), 0px 28.8px 35.1px rgba(0, 0, 0, 0.014),
+    0px 62px 84px rgba(0, 0, 0, 0.02);
   display: flex;
   justify-content: space-between;
   padding: 1.5rem 5rem;
@@ -42,6 +44,21 @@ body {
   font-size: 24px;
   font-weight: 600;
   color: var(--black);
+}
+
+.topbar .hamburger {
+  display: none;
+  /* display: flex; */
+  align-items: center;
+  cursor: pointer;
+}
+.topbar .close {
+  display: none;
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  z-index: 3;
+  cursor: pointer;
 }
 
 .topbar .right {
@@ -284,6 +301,611 @@ footer {
 .wrapper-footer .info p {
   font-size: 16px;
   font-weight: 400;
+}
+
+/* end footer */
+
+/* responsive */
+@media screen and (max-width: 900px) {
+  /* menu */
+  .topbar .right {
+    display: none;
+    position: absolute;
+    background: var(--orange);
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: 0px -0.6px 2.3px rgba(0, 0, 0, 0.006), 0px 1.2px 5.6px rgba(0, 0, 0, 0.008), 0px 5.9px 10.5px rgba(0, 0, 0, 0.01), 0px 14.3px 18.8px rgba(0, 0, 0, 0.012), 0px 28.8px 35.1px rgba(0, 0, 0, 0.014),
+      0px 62px 84px rgba(0, 0, 0, 0.02);
+  }
+
+  .topbar .hamburger {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  /* welcome */
+  .wrapper-welcome .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+  }
+
+  .wrapper-welcome .content .wm {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .wrapper-welcome .content h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+  .wrapper-welcome .content span {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .wrapper-welcome .content p {
+    max-width: 500px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5e5e5e;
+    margin-bottom: 32px;
+  }
+  .wrapper-welcome .content button {
+    all: unset;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--orange);
+    align-self: flex-start;
+    padding: 12px 72px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .wrapper-welcome .img {
+    max-width: 460px;
+    margin-right: 2rem;
+  }
+
+  /* e-learning */
+  .wrapper-elearning .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 640px;
+  }
+
+  .wrapper-elearning .content h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+  .wrapper-elearning .content span {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .wrapper-elearning .content p {
+    max-width: 500px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5e5e5e;
+    margin-bottom: 32px;
+  }
+  .wrapper-elearning .content button {
+    all: unset;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--orange);
+    align-self: flex-start;
+    padding: 12px 72px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .wrapper-elearning .img {
+    max-width: 460px;
+    margin-right: 1rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  /* welcome */
+  .wrapper-welcome .content .wm {
+    font-size: 14px;
+  }
+  .wrapper-welcome .content h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .wrapper-welcome .content span {
+    font-size: 24px;
+  }
+  .wrapper-welcome .content p {
+    max-width: 500px;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .wrapper-welcome .content button {
+    font-size: 16px;
+    align-self: flex-start;
+    padding: 12px 72px;
+  }
+
+  .wrapper-welcome .img {
+    max-width: 320px;
+    margin-right: 2rem;
+  }
+
+  /* e-learning */
+  .wrapper-elearning .content h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .wrapper-elearning .content span {
+    font-size: 24px;
+  }
+  .wrapper-elearning .content p {
+    max-width: 500px;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .wrapper-elearning .content button {
+    font-size: 16px;
+    align-self: flex-start;
+    padding: 12px 72px;
+  }
+
+  .wrapper-elearning .img {
+    max-width: 320px;
+    margin-right: 1rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  /* topbar */
+  .topbar {
+    padding: 1.5rem 3rem;
+  }
+
+  .topbar .left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .topbar .left .logo {
+    max-width: 28px;
+  }
+
+  .topbar .left .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .topbar .right {
+    text-decoration: none;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: 1rem;
+  }
+
+  .topbar .right a {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--black);
+    position: relative;
+  }
+
+  .topbar .right a::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    bottom: -4px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 0%;
+    background: var(--black);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .topbar .right a:hover::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    bottom: -4px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 70%;
+    background: var(--black);
+  }
+
+  .topbar .right a.active {
+    font-weight: 600;
+  }
+  .topbar .right a.active::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    bottom: -4px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 70%;
+    background: var(--black);
+  }
+
+  /* welcome */
+  .wrapper-welcome {
+    padding: 5rem 4rem 3rem 4rem;
+  }
+  .wrapper-welcome .content .wm {
+    font-size: 12px;
+  }
+  .wrapper-welcome .content h1 {
+    font-size: 20.8px;
+    margin-bottom: 8px;
+  }
+  .wrapper-welcome .content span {
+    font-size: 20.8px;
+  }
+  .wrapper-welcome .content p {
+    max-width: 500px;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .wrapper-welcome .content button {
+    font-size: 14px;
+    align-self: flex-start;
+    padding: 8px 46px;
+  }
+
+  .wrapper-welcome .img {
+    max-width: 320px;
+    margin-right: 0rem;
+  }
+
+  /* e-learning */
+  .wrapper-elearning {
+    padding: 3rem 4rem;
+  }
+  .wrapper-elearning .content h1 {
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+  .wrapper-elearning .content span {
+    font-size: 21px;
+  }
+  .wrapper-elearning .content p {
+    max-width: 500px;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .wrapper-elearning .content button {
+    font-size: 14px;
+    align-self: flex-start;
+    padding: 8px 46px;
+  }
+
+  .wrapper-elearning .img {
+    max-width: 320px;
+    margin-right: 1rem;
+  }
+
+  /* footer */
+  footer {
+    padding: 5rem 4rem 7rem 4rem;
+    justify-content: center;
+  }
+
+  .wrapper-footer {
+    max-width: 1460px;
+  }
+
+  .wrapper-footer .title {
+    flex: 1;
+    margin-right: 8px;
+  }
+  .wrapper-footer .title h1 {
+    font-size: 20px;
+  }
+
+  .wrapper-footer .tentang {
+    flex: 1.5;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .wrapper-footer .tentang h3 {
+    font-size: 18px;
+  }
+  .wrapper-footer .tentang p {
+    font-size: 14px;
+  }
+
+  .wrapper-footer .info {
+    flex: 1.5;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .wrapper-footer .info .alamat {
+    align-items: start;
+    gap: 8px;
+  }
+  .wrapper-footer .info .telp {
+    align-items: start;
+    gap: 8px;
+  }
+  .wrapper-footer .info h3 {
+    font-size: 18px;
+  }
+  .wrapper-footer .info p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* welcome */
+  .wrapper-welcome {
+    flex-direction: column-reverse;
+    padding: 5rem 3rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wrapper-welcome .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .wrapper-welcome .content .wm {
+    font-size: 16px;
+  }
+  .wrapper-welcome .content h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .wrapper-welcome .content span {
+    font-size: 32px;
+  }
+  .wrapper-welcome .content p {
+    max-width: 100%;
+    font-size: 16px;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  .wrapper-welcome .content button {
+    font-size: 18px;
+    align-self: flex-start;
+    padding: 12px 72px;
+    margin: auto;
+  }
+
+  .wrapper-welcome .img {
+    max-width: 320px;
+    margin-right: 0;
+  }
+
+  /* e-learning */
+  .wrapper-elearning {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wrapper-elearning .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    /* align-items: center; */
+  }
+
+  .wrapper-elearning .content h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .wrapper-elearning .content span {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .wrapper-elearning .content p {
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5e5e5e;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  .wrapper-elearning .content button {
+    all: unset;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--orange);
+    align-self: flex-start;
+    padding: 12px 72px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .wrapper-elearning .img {
+    max-width: 320px;
+    margin-right: 0;
+  }
+
+  /* footer */
+  footer {
+    padding: 5rem 3rem 7rem 3rem;
+    justify-content: center;
+  }
+
+  .wrapper-footer {
+    max-width: 1460px;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .wrapper-footer .title {
+    flex: 1;
+    margin-bottom: 4px;
+    /* text-align: center; */
+  }
+  .wrapper-footer .title h1 {
+    font-size: 24px;
+  }
+
+  .wrapper-footer .tentang {
+    flex: 1.5;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .wrapper-footer .tentang h3 {
+    font-size: 18px;
+  }
+  .wrapper-footer .tentang p {
+    font-size: 14px;
+  }
+
+  .wrapper-footer .info {
+    flex: 1.5;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .wrapper-footer .info .alamat {
+    align-items: start;
+    gap: 8px;
+  }
+  .wrapper-footer .info .telp {
+    align-items: start;
+    gap: 8px;
+  }
+  .wrapper-footer .info h3 {
+    font-size: 18px;
+  }
+  .wrapper-footer .info p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 400px) {
+  /* welcome */
+  .wrapper-welcome {
+    flex-direction: column-reverse;
+    padding: 5rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wrapper-welcome .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .wrapper-welcome .content .wm {
+    font-size: 12px;
+  }
+  .wrapper-welcome .content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .wrapper-welcome .content span {
+    font-size: 24px;
+  }
+  .wrapper-welcome .content p {
+    max-width: 100%;
+    font-size: 14px;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  .wrapper-welcome .content button {
+    font-size: 16px;
+    align-self: flex-start;
+    padding: 12px 72px;
+    margin: auto;
+  }
+
+  .wrapper-welcome .img {
+    max-width: 240px;
+    margin-right: 0;
+  }
+
+  /* e-learning */
+  .wrapper-elearning {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wrapper-elearning .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    /* align-items: center; */
+  }
+
+  .wrapper-elearning .content h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .wrapper-elearning .content span {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .wrapper-elearning .content p {
+    max-width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5e5e5e;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  .wrapper-elearning .content button {
+    all: unset;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--orange);
+    align-self: flex-start;
+    padding: 12px 72px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .wrapper-elearning .img {
+    max-width: 240px;
+    margin-right: 0;
+  }
 }
 
 /* end footer */

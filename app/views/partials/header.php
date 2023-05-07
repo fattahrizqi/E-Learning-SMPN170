@@ -17,6 +17,12 @@
               <img class="logo" src="<?= BASEURL ?>asset/logo 170.png"></img>
               <h3 class="title">SMPN 170</h3>
           </a>
+          <div class="hamburger" onclick="showMenu()">
+            <img src="<?= BASEURL ?>asset/list.svg">
+          </div>
+          <div class="close" onclick="hideMenu()">
+            <img src="<?= BASEURL ?>asset/x.svg">
+          </div>
           <div class="right">
               <a href="<?= BASEURL ?>" <?php if($data['title'] === 'Home'){ echo "class='active'"; } ?>>Beranda</a>
               <a href="<?= BASEURL ?>about" <?php if($data['title'] === 'Profil'){ echo "class='active'"; } ?>>Profil</a>
