@@ -23,7 +23,7 @@ class Handler {
             return false;
         }
 
-        if ( $fileSize > 1000000 ) {
+        if ( $fileSize > 10000000 ) {
             return false;
         }
 

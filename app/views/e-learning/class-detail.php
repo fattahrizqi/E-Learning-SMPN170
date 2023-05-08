@@ -87,7 +87,9 @@
                               <button class="detail" onclick="location.href='<?= BASEURL ?>class/dt/<?= $data['detail_class']['code'] ?>-<?= $post['slug'] ?>'" >Lihat Detail</button>
                             <?php endif ?>
                             <?php if($_SESSION['role'] === 'guru' || $post['author'] == $_SESSION['user_id']) : ?>
-                                <button onclick="showModal()" class="delete"><img src="<?= BASEURL ?>asset/trash-fill.svg" srcset=""></button>
+                                <form action="<?= BASEURL ?>class/dp/<?= $post['id'] ?>-<?= \App\helpers\Unique::generate(4) ?>" method="post">
+                                <button onclick="return confirm('Ingin menghapus postingan?')" class="delete"><img src="<?= BASEURL ?>asset/trash-fill.svg" srcset=""></button>
+                                </form>
                             <?php endif ?>
                         </div>
                         </div>

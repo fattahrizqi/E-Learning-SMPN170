@@ -222,6 +222,7 @@ class ClassController extends Controller{
                     if (!empty($file2)) {
                         $file2['post_id'] = $post['id'];
                     }
+
                     if ($file && $file2) {
                         $setAttachment = $this->model('Class_model')->setAttachment($file);
                         $setAttachment2 = $this->model('Class_model')->setAttachment($file2);
@@ -298,6 +299,24 @@ class ClassController extends Controller{
                 header('Location: ' . BASEURL . 'class');
                 exit();
             }
+        }
+    }
+
+    public function dp($param = null)
+    {
+        // HTTP method check
+        Request::requestMethod();
+
+        $param = explode('-', $param);
+        $delPost = $this->model('Class_model')->delPost($param[0]);
+        if ($delPost) {
+            Flasher::setFlash('success', 'Post delete successful!');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit();
+        } else {
+            Flasher::setFlash('error', 'Post delete failed!');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit();
         }
     }
 

@@ -28,7 +28,7 @@
                     </div>
                 <?php } ?>
                 <div class="akun">
-                    <a href="#" class="profil">
+                    <a href="<?= BASEURL ?>profil" class="profil">
                         <img src="<?= BASEURL ?>asset/user.svg" class="icon">
                         <h3><?= $data['user']['name'] ?></h3>
                     </a>

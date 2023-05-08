@@ -135,6 +135,16 @@ class Class_model {
         return $this->db->rowCount();
     }
 
+    public function delPost($id)
+    {
+        $this->db->query('DELETE FROM ' . $this->table[3] . ' WHERE id = :id');
+        $this->db->bind('id', $id);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+
+    }
+
     public function setAttachment($request)
     {
         $this->db->query('INSERT INTO ' . $this->table[4] . ' (post_id, dirname, filename) VALUES
