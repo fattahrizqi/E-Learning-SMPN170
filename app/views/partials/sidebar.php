@@ -28,7 +28,7 @@
                     </div>
                 <?php } ?>
                 <div class="akun">
-                    <a href="<?= BASEURL ?>profil" class="profil">
+                    <a href="<?= BASEURL ?>profil/ud/<?= $data['user']['id'] ?>-<?= \App\helpers\Unique::generate(3) ?>-<?= \App\helpers\Unique::generate(12) ?>" class="profil">
                         <img src="<?= BASEURL ?>asset/user.svg" class="icon">
                         <h3><?= $data['user']['name'] ?></h3>
                     </a>

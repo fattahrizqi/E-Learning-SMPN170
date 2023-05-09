@@ -53,10 +53,12 @@
                   <input type="file" name="attachment2" id="attachment2" placeholder="file2">
                   <?php if($_SESSION['role'] === 'guru') : ?>
                     <select name="categories" id="categories">
-                      <option value="" hidden>Kategori</option>
+                      <option value="default" hidden>Kategori</option>
                       <option value="default">Default</option>
                       <option value="tugas">Tugas</option>
                     </select>
+                  <?php else : ?>
+                    <input type="hidden" name="categories" value="default">
                   <?php endif ?>
                   <textarea name="description" id="editor" placeholder="Ketik deskripsi..">
                   </textarea>

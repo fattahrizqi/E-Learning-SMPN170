@@ -8,12 +8,12 @@
                     <a href="<?= BASEURL ?>class/" class="title">SMPN 170</a>
                 <?php } ?>
             </div>
-            <?php if($_SESSION['role'] === 'siswa') { ?>
+            <?php if($_SESSION['role'] === 'siswa' && $data['title'] !== 'Profil') { ?>
             <div onclick="showModal()" class="right">
                 <h3>Gabung kelas</h3>
                 <img src="<?= BASEURL ?>asset/plus.svg">
             </div>
-            <?php } elseif ($_SESSION['role'] === 'guru') { ?>
+            <?php } elseif ($_SESSION['role'] === 'guru' && $data['title'] !== 'Profil') { ?>
             <div onclick="showModal()" class="right">
                 <h3>Buat kelas</h3>
                 <img src="<?= BASEURL ?>asset/plus.svg">

@@ -98,6 +98,16 @@ class User_model {
       return $this->db->single();
     }
 
+    public function getUserProfile($id)
+    {
+      $this->db->query('SELECT t_user.*, t_user_detail.* FROM ' . $this->table[0] . ' 
+      INNER JOIN ' . $this->table[1] . ' ON t_user.id = t_user_detail.user_id 
+      WHERE t_user.id = :id');
+      $this->db->bind('id', $id);
+
+      return $this->db->single();
+    }
+
     public function getUserByName($name)
     {
       $this->db->query('SELECT * FROM ' . $this->table[0] . ' WHERE name = :name');
@@ -190,6 +200,23 @@ class User_model {
       $this->db->bind('role', $request['role']);
       $this->db->execute();
       
+      return $this->db->rowCount();
+    }
+
+    public function editProfil($request)
+    { 
+      $this->db->query('UPDATE ' . $this->table[1] . ' SET no_induk = :no_induk, position = :position, gender = :gender, religion = :religion, address = :address, birth_place = :birth_place, birth = :birth, profpic = :profpic WHERE user_id = :user_id');
+      $this->db->bind('user_id', $request['user_id']);
+      $this->db->bind('no_induk', $request['noinduk']);
+      $this->db->bind('position', $request['position']);
+      $this->db->bind('gender', $request['gender']);
+      $this->db->bind('address', $request['address']);
+      $this->db->bind('religion', $request['religion']);
+      $this->db->bind('birth_place', $request['birth_place']);
+      $this->db->bind('birth', $request['birth']);
+      $this->db->bind('profpic', $request['profpic']);
+      $this->db->execute();
+
       return $this->db->rowCount();
     }
     

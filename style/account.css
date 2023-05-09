@@ -192,16 +192,16 @@ body {
 
 /* modal box */
 .wrapper-modal {
-  position: fixed;
+  position: absolute;
   background-color: white;
-  top: 50%;
+  top: 50px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0px);
   border: 1px solid var(--black);
   border-radius: 32px;
   width: 600px;
   display: none;
-  z-index: 2;
+  z-index: 5;
 }
 
 .wrapper-modal.active {
@@ -216,7 +216,7 @@ body {
   left: 0;
   right: 0;
   display: none;
-  z-index: 2;
+  z-index: 5;a
 }
 
 .wrapper-modal .top {
@@ -246,8 +246,16 @@ body {
 .wrapper-modal .content form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
+
+.wrapper-form form input {
+  all: unset;
+  border: 1px solid var(--black);
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+}
+
 .wrapper-modal .content form .mapel,
 .wrapper-modal .content form .kelas,
 .wrapper-modal .content form .abjad {
@@ -338,7 +346,9 @@ body {
 
 .wrapper-main .card .img{
   min-width: 300px;
+  max-width: 320px;
   height: 360px;
+  max-height: 360px;
   border-radius: 20px;
   box-shadow:
   0px 0px 2.5px rgba(0, 0, 0, 0.02),

@@ -180,10 +180,11 @@ class ClassController extends Controller{
         // HTTP method check
         Request::requestMethod();
 
+        
         $handler = new Handler();
         $validator = new Validator();
         $errors = $validator->postValidate($_POST);
-
+        
         if (count($errors) > 0) {
             // Jika terdapat error, kembalikan ke halaman kontak dengan pesan error
             $_SESSION['errors'] = $errors;
@@ -191,7 +192,7 @@ class ClassController extends Controller{
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
-
+        
         $_POST['description'] = htmlspecialchars($_POST['description']);
         $_POST['author'] = $_SESSION['user_id'];
         $_POST['slug'] = Unique::generate(24);

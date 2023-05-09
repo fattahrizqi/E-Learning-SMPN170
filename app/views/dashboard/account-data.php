@@ -52,8 +52,10 @@
           <div class="wrapper-table">
             <div class="top">
               <h1>Table Data Akun</h1>
-              <button onclick="showModal()">Import Data</button>
-              <button onclick="showSecondModal()">Buat Akun</button>
+              <div class="button-data">
+                <button onclick="showModal()">Import Data</button>
+                <button onclick="showSecondModal()">Buat Akun</button>
+              </div>
             </div>
 
             <div class="main">
