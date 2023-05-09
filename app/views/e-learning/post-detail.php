@@ -18,7 +18,7 @@
                         <a href="#">not setted</a>
                       <?php endif ?>
                     </div>
-                    <form method="post" action="<?= BASEURL ?>class/mark">
+                    <form class="form-input" method="post" action="<?= BASEURL ?>class/mark">
                       <input type="number" name="mark" placeholder="Masukan nilai" value="<?= $data['user_assignment']['mark'] != 0 ? $data['user_assignment']['mark'] : '' ?>">
                       <input type="text" name="teacher_note" placeholder="Tulis catatan">
                       <input type="hidden" name="user_id" value="<?= $data['user_assignment']['user_id'] ?>">
