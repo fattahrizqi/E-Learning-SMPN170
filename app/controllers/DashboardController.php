@@ -173,4 +173,24 @@ class DashboardController extends Controller {
         $this->view('partials/admin-sidebar', $data);
         $this->view('userprofil/index', $data);
     }
+
+    public function du()
+    {
+        // HTTP method check
+        Request::requestMethod();
+
+        var_dump($_POST);
+        $user_id = $_POST['user_id'];
+
+        $del = $this->model('User_model')->deleteUserById($user_id);
+        if ($del) {
+            Flasher::setflash('success', 'Data deleted successful!');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit();
+        } else {
+            Flasher::setflash('error', 'Data deleted failed!');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
+    }
 }

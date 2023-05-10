@@ -1,3 +1,5 @@
+English
+
 # Note: Read it in Word Wrap
 
 # E-Learning SMPN 170, build in Native PHP MVC architecture, using .htaccess rewriteEngine for URL rule
@@ -51,8 +53,74 @@
 
     ## as a E-Learning App, role that's in list :
 
-        ### Student : Joining class by unique code that sended by teacher, submit a class work and get mark from teacher. Can start post but as discussion post, and edit profil
+        ### Student : Joining class by unique code that sended by teacher, submit a class work and get mark from teacher. Can start post but as discussion post, and edit profil. For this role, it can be registered in sign up page
 
-        ### Teacher : Create a class, set a class work, and set students mark, and edit profil
+        ### Teacher : Create a class, set a class work, and set students mark, and edit profil. For this role, it just can be registered by admin in account centre
 
-        ### Admin : Manage user account (create account for teacher or students, and create user by importing csv or xlsx file)
+        ### Admin : Manage user account (create account for teacher or students, and create user by importing csv or xlsx file) with default username: admin@admin.com, pass: adminweb
+
+
+==============================================================================================================
+==============================================================================================================
+
+
+Bahasa Indonesia
+
+# Catatan: Bacalah dengan fitur Word Wrap diaktifkan
+
+# E-Learning SMPN 170, dibangun dengan arsitektur Native PHP MVC, menggunakan .htaccess rewriteEngine untuk aturan URL
+
+    ## Aplikasi Native PHP MVC (Model-View-Controller) adalah arsitektur aplikasi web yang memisahkan aplikasi menjadi tiga komponen utama: model, view, dan controller.
+
+        ### Model bertanggung jawab untuk mengelola data dan menyediakannya ke tampilan. Ini adalah komponen yang berinteraksi dengan database dan mengambil atau menyimpan data.
+
+        ### View bertanggung jawab untuk merender data yang disediakan oleh model. Ini adalah komponen yang digunakan oleh pengguna dan terlihat di layar.
+
+        ### Controller bertanggung jawab untuk menerima dan memproses masukan pengguna, memanggil model dan tampilan yang sesuai, dan mengembalikan respons yang tepat kepada pengguna.
+
+    ## Pada aplikasi Native PHP MVC, controller diimplementasikan menggunakan skrip PHP, yang menghandle request yang dibuat oleh pengguna dan menentukan cara menanganinya. Model diimplementasikan menggunakan kelas-kelas PHP, yang berinteraksi dengan database dan mengembalikan data ke controller. View diimplementasikan menggunakan templating PHP, yang menghasilkan kode HTML yang dikirim ke client-side web.
+
+    ## Dengan menggunakan arsitektur MVC, aplikasi Native PHP MVC lebih mudah untuk di-maintenance, testing, dan dikembangkan. Pemisahan responsibility antara komponen model, view, dan controller membuatnya lebih mudah untuk memodifikasi dan memperbarui aplikasi tanpa memengaruhi komponen lainnya. Selain itu, penggunaan kelas-kelas dan templating PHP dengan prinsip reuseabilitas kode, mengurangi waktu dan usaha yang dibutuhkan untuk mengembangkan fitur baru atau memperbaiki bug.
+
+    ## Secara keseluruhan, penggunaan Native PHP MVC dapat menghasilkan aplikasi web yang lebih mudah dipelihara, dapat dikembangkan dengan skala lebih besar, dan dapat diuji, dengan proses pengembangan yang lebih efisien.
+
+--------------------------------------------------------------------------------------------------------------
+
+# Panduan Manual
+
+    ## Buatlah database lokal Anda di PhpMyAdmin atau sejenisnya dengan dbname db_e-learning_smpn170, kemudian impor tabel dengan file sql yang tersedia di App\database\
+
+    ## Akses App\config\config.php untuk mengatur konfigurasi anda sendiri, seperti BASEURL (misalnya, jika saya menyimpan aplikasi ini di xampp\htdocs, maka saya harus menulis baseurl 'http://localhost/E-Learning-SMPN170/' yang mewakili di mana aplikasi disimpan, dan nama folder aplikasinya) serta semua konfigurasi database (seperti dbname, host, user, password)
+
+    ## Bacalah dokumentasi singkat di kode sumber (jika diperlukan)
+
+--------------------------------------------------------------------------------------------------------------
+
+# Penjelasan App\helpers
+
+    ## Ini adalah program helpers yang berguna untuk tujuan tertentu
+
+    ## Komponen helpers dibangun secara terpisah dari kode utama untuk reuseabilitas kode
+
+    ## Daftar class pada App\helpers:
+
+        ### Flasher: untuk mengatur dan mengembalikan pesan kilat sebagai umpan balik tindakan pengguna.
+        ### Handler: (untuk saat ini) dibangun untuk menangani permintaan HTTP $_FILES sebelum disimpan ke repo dan db.
+        ### Request: sebagai validator Metode Permintaan HTTP, biasanya pembantu ini digunakan saat metode hanya untuk metode POST saja.
+        ### Time: fungsi untuk mengkonversi timestamp database menjadi waktu yang ramah pengguna.
+        ### Unique: metode statis yang berguna untuk menghasilkan kode unik.
+        ### Validator: sebagai validator input formulir.
+
+--------------------------------------------------------------------------------------------------------------
+
+# Penjelasan App\middlewares
+
+    ## Ini adalah program untuk mengotorisasi peran pengguna.
+
+    ## Sebagai Aplikasi E-Learning, peran yang ada dalam daftar:
+
+        ### Siswa: Bergabung dengan kelas menggunakan kode unik yang dikirimkan oleh guru, mengirimkan tugas kelas dan mendapatkan penilaian dari guru. Dapat memulai pos tetapi hanya sebagai pos diskusi, dan mengedit profil. Untuk peran ini, dapat mendaftar di halaman sign up.
+
+        ### Guru: Membuat kelas, menetapkan tugas kelas, dan menetapkan penilaian siswa, serta mengedit profil. Untuk peran ini, hanya dapat didaftarkan oleh admin di pusat akun.
+
+        ### Admin: Mengelola akun pengguna (membuat akun untuk guru atau siswa, dan membuat pengguna dengan mengimpor file csv atau xlsx) dengan username default: admin@admin.com, pass: adminweb

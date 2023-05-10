@@ -79,6 +79,7 @@
                   <th>JK</th>
                   <th>Alamat</th>
                   <th>Tanggal Lahir</th>
+                  <th>Aksi</th>
                 </tr>
                 <?php if (empty($data['user'])) { ?>
                   <tr>
@@ -86,7 +87,7 @@
                   </tr>
                   <?php } else { ?>
                     <?php foreach ($data['user'] as $akun) : ?>
-                      <tr onclick="location.href='<?= BASEURL ?>dashboard/ud/<?= $akun['id'] ?>-<?= \App\helpers\Unique::generate(3) ?>-<?= \App\helpers\Unique::generate(12) ?>'" style="cursor:pointer;">
+                      <tr>
                         <td><?= $akun['name'] ?></td>
                         <td><?= $akun['no_induk'] ?></td>
                         <td><?= $akun['role'] ?></td>
@@ -94,6 +95,13 @@
                         <td><?= $akun['gender'] ?></td>
                         <td><?= $akun['address'] ?></td>
                         <td><?= $akun['birth'] ?></td>
+                        <td>
+                          <form action="<?= BASEURL ?>dashboard/du" method="post">
+                          <input type="hidden" name="user_id" value="<?= $akun['id'] ?>">
+                          <button onclick="return confirm('Hapus data?')" style="all:unset;background-color:#c53535;color:white;padding:5px 10px;cursor:pointer;width:4rem;margin-bottom:5px;" class="delete">DELETE</button>
+                          </form>
+                          <button onclick="location.href='<?= BASEURL ?>dashboard/ud/<?= $akun['id'] ?>-<?= \App\helpers\Unique::generate(3) ?>-<?= \App\helpers\Unique::generate(12) ?>'" style="all:unset;background-color:#17a2b8;cursor:pointer;color:white;padding:5px 10px;width:4rem">DETAIL</button>
+                        </td>
                       </tr>
                     <?php endforeach ?>
                 <?php } ?>
