@@ -233,12 +233,29 @@ class Class_model {
         return $this->db->resultSet();
     }
 
-    public function getPostAndAssignment($slug)
+    public function getPostAndAssignment($slug, $filter = null)
     {
-        $this->db->query('SELECT t_class_post.*, t_user_assignment.*, t_user.name FROM ' . $this->table[3] . ' 
-        INNER JOIN ' . $this->table[5] . ' ON t_class_post.id = t_user_assignment.post_id
-        INNER JOIN ' . $this->table[2] . ' ON t_user_assignment.user_id = t_user.id 
-        WHERE t_class_post.slug = :slug');
+        if ($filter === 'assigned') {
+            $this->db->query('SELECT t_class_post.*, t_user_assignment.*, t_user.name FROM ' . $this->table[3] . ' 
+            INNER JOIN ' . $this->table[5] . ' ON t_class_post.id = t_user_assignment.post_id
+            INNER JOIN ' . $this->table[2] . ' ON t_user_assignment.user_id = t_user.id 
+            WHERE t_class_post.slug = :slug AND t_user_assignment.dirname IS NULL AND t_user_assignment.mark = 0');
+        } elseif ($filter === 'submitted') {
+            $this->db->query('SELECT t_class_post.*, t_user_assignment.*, t_user.name FROM ' . $this->table[3] . ' 
+            INNER JOIN ' . $this->table[5] . ' ON t_class_post.id = t_user_assignment.post_id
+            INNER JOIN ' . $this->table[2] . ' ON t_user_assignment.user_id = t_user.id 
+            WHERE t_class_post.slug = :slug AND t_user_assignment.dirname IS NOT NULL AND t_user_assignment.mark = 0');
+        } elseif ($filter === 'marked') {
+            $this->db->query('SELECT t_class_post.*, t_user_assignment.*, t_user.name FROM ' . $this->table[3] . ' 
+            INNER JOIN ' . $this->table[5] . ' ON t_class_post.id = t_user_assignment.post_id
+            INNER JOIN ' . $this->table[2] . ' ON t_user_assignment.user_id = t_user.id 
+            WHERE t_class_post.slug = :slug AND t_user_assignment.mark != 0');
+        } else {
+            $this->db->query('SELECT t_class_post.*, t_user_assignment.*, t_user.name FROM ' . $this->table[3] . ' 
+            INNER JOIN ' . $this->table[5] . ' ON t_class_post.id = t_user_assignment.post_id
+            INNER JOIN ' . $this->table[2] . ' ON t_user_assignment.user_id = t_user.id 
+            WHERE t_class_post.slug = :slug');
+        }
         $this->db->bind('slug', $slug);
     
         return $this->db->resultSet();

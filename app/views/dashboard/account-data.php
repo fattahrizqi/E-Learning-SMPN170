@@ -86,7 +86,7 @@
                   </tr>
                   <?php } else { ?>
                     <?php foreach ($data['user'] as $akun) : ?>
-                      <tr onclick="location.href='<?= BASEURL ?>dashboard'" style="cursor:pointer;">
+                      <tr onclick="location.href='<?= BASEURL ?>dashboard/ud/<?= $akun['id'] ?>-<?= \App\helpers\Unique::generate(3) ?>-<?= \App\helpers\Unique::generate(12) ?>'" style="cursor:pointer;">
                         <td><?= $akun['name'] ?></td>
                         <td><?= $akun['no_induk'] ?></td>
                         <td><?= $akun['role'] ?></td>

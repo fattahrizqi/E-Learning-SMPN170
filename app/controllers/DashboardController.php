@@ -7,6 +7,7 @@ use App\helpers\Validator as Validator;
 
 class DashboardController extends Controller {
 
+    // method to check that user was authenticated and have admin role before interact with this controller
     public function __construct()
     {
         Auth::isAuthenticated();
@@ -18,9 +19,16 @@ class DashboardController extends Controller {
         $data['topbar'] = 1;
         $data['style'] = 'dashboardAdmin';
         $data['title'] = 'Dashboard';
+
+
+        // count all students classified by gender
         $data['L'] = $this->model('User_model')->getAllStudent('L');
         $data['P'] = $this->model('User_model')->getAllStudent('P');
+
+        // get all teacher
         $data['teacher'] = $this->model('User_model')->getAllTeacher();
+
+        // get all admin
         $data['admin'] = $this->model('User_model')->getAllAdmin();
 
         $this->view('partials/elearn-header', $data);
@@ -29,18 +37,21 @@ class DashboardController extends Controller {
         $this->view('dashboard/index', $data);
     }
 
+    // ac (account centre) with url param format ...dashboard/ac/{pagination}, default : page-1
     public function ac($param = "page-1")
     {
         $data['topbar'] = 1;
         $data['style'] = 'dataAkunAdmin';
         $data['title'] = 'Data Akun';
 
+
+        $param = explode('-', $param);
+
         // pagination config
         $data['records_per_page'] = 10;
         $data['data_sum'] = count($this->model('User_model')->getAllUser());
         $data['total_page'] = ceil($data['data_sum'] / $data['records_per_page']);
         
-        $param = explode('-', $param);
         
         $data['current_page'] = (isset($param[1])) ? $param[1] : 1;
         $data['offset'] = ( $data['records_per_page'] * $data['current_page'] ) - $data['records_per_page'];
@@ -64,6 +75,7 @@ class DashboardController extends Controller {
         unset($_SESSION['old']);
     }
 
+    // acs (account centre search)
     public function acs($param = 'page-1')
     {
         // HTTP method check
@@ -104,11 +116,12 @@ class DashboardController extends Controller {
         // HTTP method check
         Request::requestMethod();
         
+        // initiate new object of Validator class (helpers)
         $validator = new Validator();
-        $errors = $validator->ucValidate($_POST);
+        $errors = $validator->ucValidate($_POST); // form validate
 
         if (count($errors) > 0) {
-            // Jika terdapat error, kembalikan ke halaman kontak dengan pesan error
+            // If error is set, return back to previous url with error message
             $_SESSION['errors'] = $errors;
             $_SESSION['old'] = $_POST;
             header('Location: ' . BASEURL . 'dashboard/ac');
@@ -136,5 +149,28 @@ class DashboardController extends Controller {
                 exit;
             }
         }
+    }
+
+    // ud (user detail)
+    public function ud($param = null)
+    {
+        if (empty($param)) {
+            header('Location: ' . BASEURL . 'class');
+            exit;
+        }
+
+        $data['style'] = 'account';
+        $data['title'] = 'Profil';
+        $data['topbar'] = 1;
+
+        $param = explode('-', $param);
+        $user_id = $param[0];
+
+        $data['profil'] = $this->model('User_model')->getUserProfile($user_id);
+
+        $this->view('partials/elearn-header', $data);
+        $this->view('partials/topbar', $data);
+        $this->view('partials/admin-sidebar', $data);
+        $this->view('userprofil/index', $data);
     }
 }

@@ -19,7 +19,7 @@
                       <?php endif ?>
                     </div>
                     <form class="form-input" method="post" action="<?= BASEURL ?>class/mark">
-                      <input type="number" name="mark" placeholder="Masukan nilai" value="<?= $data['user_assignment']['mark'] != 0 ? $data['user_assignment']['mark'] : '' ?>">
+                      <input type="number" name="mark" max="100" placeholder="Masukan nilai" value="<?= $data['user_assignment']['mark'] != 0 ? $data['user_assignment']['mark'] : '' ?>">
                       <input type="text" name="teacher_note" placeholder="Tulis catatan">
                       <input type="hidden" name="user_id" value="<?= $data['user_assignment']['user_id'] ?>">
                       <input type="hidden" name="post_id" value="<?= $data['detail_post']['id'] ?>">

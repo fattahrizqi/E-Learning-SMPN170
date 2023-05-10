@@ -21,7 +21,7 @@ class User_model {
 
     public function getAllUser()
     {
-      $this->db->query('SELECT t_user.name, t_user.role, t_user.email, t_user_detail.no_induk, 
+      $this->db->query('SELECT t_user.id, t_user.name, t_user.role, t_user.email, t_user_detail.no_induk, 
       t_user_detail.position, t_user_detail.gender , t_user_detail.address, t_user_detail.birth FROM ' . $this->table[0] . ' 
       INNER JOIN ' . $this->table[1] . ' ON t_user.id = t_user_detail.user_id 
       WHERE t_user.name != :excluded_name');
@@ -32,7 +32,7 @@ class User_model {
 
     public function getAllUserPage($offset, $limit)
     {
-      $this->db->query('SELECT t_user.name, t_user.role, t_user.email, t_user_detail.no_induk, 
+      $this->db->query('SELECT t_user.id, t_user.name, t_user.role, t_user.email, t_user_detail.no_induk, 
       t_user_detail.position, t_user_detail.gender , t_user_detail.address, t_user_detail.birth FROM ' . $this->table[0] . ' 
       INNER JOIN ' . $this->table[1] . ' ON t_user.id = t_user_detail.user_id 
       WHERE t_user.name != :excluded_name LIMIT :offset, :limit');
@@ -148,6 +148,17 @@ class User_model {
       $this->db->query('INSERT INTO ' . $this->table[1] . ' (user_id, no_induk) VALUES ( :user_id, :no_induk )');
       $this->db->bind('user_id', $id[0]['id']);
       $this->db->bind('no_induk', $request['noinduk']);
+      $this->db->execute();
+
+      return $this->db->rowCount();
+    }
+
+    public function changeUserPassword($id, $pass)
+    {
+      $pass = password_hash($pass, PASSWORD_ARGON2ID);
+      $this->db->query('UPDATE ' . $this->table[0] . ' SET password = :pass WHERE id = :id');
+      $this->db->bind('id', $id);
+      $this->db->bind('pass', $pass);
       $this->db->execute();
 
       return $this->db->rowCount();

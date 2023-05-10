@@ -34,23 +34,23 @@
             <div class="title">
               <h1>Lembar Jawaban Siswa</h1>
               <div class="wrapper-filter">
-                <form action="">
+                <form method="post" action="<?= BASEURL ?>class/ln/<?= $data['detail_class']['code'] . '-' . $data['slug']?>">
                   <div class="filter">
                       <img src="<?= BASEURL ?>asset/caret-down-fill.svg" class="caret"></img>
-                      <select id="filter" name="filter">
-                          <option hidden>Filter</option>
-                          <option value="belumDikerjakan">Belum dikerjakan</option>
-                          <option value="belumDinilai">Belum dinilai</option>
-                          <option value="sudahDinilai">Sudah dinilai</option>
-                      </select>
+                        <select id="filter-select" name="filter" onchange="submitForm()">
+                            <option hidden>Filter</option>
+                            <option value="assigned" <?= $data['option'] === 'assigned' ? 'selected' : '' ?>>Belum dikerjakan</option>
+                            <option value="submitted" <?= $data['option'] === 'submitted' ? 'selected' : '' ?>>Belum dinilai</option>
+                            <option value="marked" <?= $data['option'] === 'marked' ? 'selected' : '' ?>>Sudah dinilai</option>
+                        </select>
+                        <button type="submit"></button>
                   </div>
-                  
               </form>
               </div>
             </div>
 
             <div class="wrapper-cards">
-
+            <?php if (!empty($data['post_assignment'])) : ?>
               <?php foreach ($data['post_assignment'] as $assignment) : ?>
                 <div class="card" onclick="location.href='<?= BASEURL ?>class/dt/<?= $data['detail_class']['code'] ?>-<?= $assignment['slug'] . '-' . $assignment['user_id'] . '-' . \App\helpers\Unique::generate(3) ?>'">
                 <div class="top">
@@ -62,7 +62,7 @@
                   <div class="file">
                     <a href="#"><?= !empty($assignment['filename']) ? $assignment['filename'] : 'not setted' ?></a>
                   </div>
-                <?php if (!empty($assignment['dirname']) && !empty($assignment['mark'])) : ?>
+                <?php if (!empty($assignment['mark'])) : ?>
                     <p class="status" style="color:green;">Dinilai</p>
                 <?php elseif (!empty($assignment['dirname']) && empty($assignment['mark'])) : ?>
                     <p class="status">Belum dinilai</p>
@@ -72,7 +72,9 @@
                 </div>
               </div>
             <?php endforeach ?>
-              
+            <?php else : ?>
+              <p>Tidak ada data!</p>
+            <?php endif ?>
             </div>
           </div>
         </div>
@@ -81,5 +83,11 @@
     </div>
     
     <script src="<?= BASEURL ?>script/scriptSiswa.js"></script>
+    <script>
+      function submitForm() {
+        var form = document.forms[1];
+        form.submit();
+      }
+    </script>
 </body> 
 </html>

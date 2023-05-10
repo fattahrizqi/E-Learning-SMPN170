@@ -5,7 +5,7 @@
             </div>
             <div class="content">
                 <div class="wrapper-form">
-                  <form action="<?= BASEURL ?>profil/ue" method="POST" enctype="multipart/form-data">
+                  <form action="<?= BASEURL ?>profil/ep" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="old_pic" value="<?= $data['profil']['profpic'] ?>">
                     <input type="hidden" name="user_id" value="<?= $data['profil']['user_id'] ?>">
 
@@ -53,22 +53,49 @@
                     <input id="birth" name="birth" type="date" placeholder="Tanggal Lahir" required value="<?= isset($_SESSION['old']['birth']) ? $_SESSION['old']['birth'] : $data['profil']['birth'] ?>" >
                     <?= isset($_SESSION['errors']['birth']) ? '<sup style="float:left;color:red;">' . $_SESSION['errors']['birth'] . '</sup>' : '' ?>
                         
-                    <button type="submit">Buat</button>
+                    <button type="submit">Sunting</button>
                   </form>
                 </div>
             </div>
         </div>
         
-        <div class="wrapper-modal1"></div>
+        <div class="wrapper-modal1">
+            <div class="top">
+                  <h1>Ubah password</h1>
+                  <img src="<?= BASEURL ?>asset/x.svg" onclick="hideSecondModal()" class="close">
+            </div>
+            <div class="content">
+                <div class="wrapper-form">
+                  <form action="<?= BASEURL ?>profil/ucp" method="POST">
+                    <input type="hidden" name="user_id" value="<?= $data['profil']['user_id'] ?>">
+
+                    <input name="old_pass" type="password" placeholder="Password lama" required>
+
+                    <input name="new_pass" type="password" placeholder="Password baru" required >
+
+                    <input name="confirm_pass" type="password" placeholder="Konfirmasi password" required >
+                        
+                    <button type="submit">Sunting</button>
+                  </form>
+                </div>
+            </div>
+        </div>
 
         <div class="filter-background"></div>
+
+        <div class="flash" style="bottom:0;position:absolute;margin-left:10px;margin-bottom:10px;">
+            <?php App\helpers\Flasher::flash() ?>
+        </div>
 
         <div class="wrapper-main">
           <div class="card">
             <div class="text">
               <div class="top">
                 <h1 class="nama"><?= $data['profil']['name'] ?></h1>
-                <button class="sunting" onclick="showModal()">sunting profil</button>
+                <?php if ($data['profil']['user_id'] == $_SESSION['user_id'] || $_SESSION['role'] === 'admin') : ?>
+                  <button class="sunting" onclick="showModal()">sunting profil</button>
+                  <button class="sunting" style="color:red;" onclick="showSecondModal()">ubah password</button>
+                <?php endif ?>
               </div>
 
               <div class="bottom">
