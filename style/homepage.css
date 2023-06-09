@@ -372,6 +372,10 @@ footer {
   .wrapper-welcome .img {
     max-width: 460px;
     margin-right: 2rem;
+    border-radius: 20px;
+  }
+  .wrapper-welcome .img img{
+    border-radius: 20px;
   }
 
   /* e-learning */

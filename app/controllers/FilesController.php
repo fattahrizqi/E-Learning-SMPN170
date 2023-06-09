@@ -78,12 +78,17 @@ class FilesController extends Controller{
                     if ($existing_user) {
                         Flasher::setFlash('error', 'An account with that email address already exists.');
                     } else {
-                        $user_id = $this->model('User_model')->createUserByImport($param);
-                        $createProfile = $this->model('User_model')->createProfileByImport($param);
-                        if ($user_id && $createProfile) {
-                            Flasher::setFlash('success', 'Account create successfull!');
+                        if($param['name'] != null) {
+                            $user_id = $this->model('User_model')->createUserByImport($param);
+                            $createProfile = $this->model('User_model')->createProfileByImport($param);
+                            if ($user_id && $createProfile) {
+                                Flasher::setFlash('success', 'Account create successfull!');
+                            } else {
+                                Flasher::setFlash('error', 'There was an error creating your account.');
+                            }
                         } else {
-                            Flasher::setFlash('error', 'There was an error creating your account.');
+                            Flasher::setFlash('success', 'Import data success!');
+                            header('Location: ' . $_SERVER['HTTP_REFERER']);
                         }
                     }
                 } else {

@@ -1,0 +1,349 @@
+:root {
+  --black: #2d2d2d;
+  --orange: #ffcd52;
+  --green: #00594d;
+  --blue: #4178b9;
+}
+
+*,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+/* topbar */
+.topbar {
+  background-color: white;
+  border-bottom: 1px solid var(--black);
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.topbar .left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topbar .left .hamburger {
+  cursor: pointer;
+}
+
+.topbar .left .title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--black);
+  text-decoration: none;
+}
+.topbar .right {
+  text-decoration: none;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-right: 2rem;
+}
+
+.topbar .right a {
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.topbar .right a.active {
+  font-weight: 600;
+}
+/* end topbar */
+
+/* sidebar */
+.sidebar {
+  /* display: none; */
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0;
+  left: -400px;
+  min-width: 300px;
+  height: 100vh;
+  box-shadow: 4px 0px 11px rgba(197, 197, 197, 0.438);
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.sidebar .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 40px 32px 40px;
+  background-color: var(--orange);
+}
+
+.sidebar .title .left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.sidebar .title .left h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.sidebar .title .close {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* empty class */
+.wrapper-emptyClass {
+  font-size: 18px;
+  width: max-content;
+  margin: 3rem auto;
+  color: var(--black);
+}
+/* end empty class */
+
+.sidebar .menu .wrapper-kelas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 30px;
+  overflow: auto;
+  max-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 280px;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.sidebar .menu .wrapper-kelas::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.sidebar .menu .kelas {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px;
+  color: var(--black);
+  border-radius: 10px;
+}
+
+.sidebar .menu .kelas:hover {
+  background-color: var(--orange);
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar .menu .kelas:hover .inisial {
+  border: 2px solid white;
+}
+
+.sidebar .menu .kelas .inisial {
+  border: 1px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.sidebar .menu .kelas .title {
+  all: unset;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.sidebar .menu .akun {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 40px 36px 40px;
+  background-color: white;
+  border-top: 1px solid var(--black);
+  width: 100%;
+}
+
+.sidebar .menu .akun .profil,
+.sidebar .menu .akun .logout {
+  display: flex;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.sidebar .menu .akun h3 {
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* end sidebar */
+
+/* modal box */
+.wrapper-modal {
+  position: fixed;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--black);
+  border-radius: 32px;
+  width: 400px;
+  display: none;
+}
+
+.wrapper-modal.active {
+  display: block;
+}
+
+.filter-background {
+  background-color: rgba(0, 0, 0, 0.342);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+}
+
+.wrapper-modal .top {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--black);
+}
+
+.wrapper-modal .top h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.wrapper-modal .top .close {
+  position: absolute;
+  top: 24px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.wrapper-modal .content {
+  padding: 32px 40px 40px 40px;
+}
+
+.wrapper-modal .content h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.wrapper-modal .content input {
+  all: unset;
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  padding: 12px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wrapper-modal .content p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #656565;
+}
+
+/* end modal */
+
+/* main */
+.wrapper-main {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-bottom: 5rem;
+  margin-top: 75px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 5rem;
+  /* gap: rem; */
+}
+
+.button-export{
+  align-self: flex-end;
+  display: flex;
+  gap: 1rem;
+}
+
+.button-export button{
+  all: unset;
+  background: var(--blue);
+  color: white;
+  padding: .5rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button-export button:hover{
+  background: royalblue;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: var(--green);
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  /* padding: 16px 40px; */
+  min-width: 150px;
+  max-width: 200px;
+  height: 60px;
+  padding: 0.5rem 1rem
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--green);
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+

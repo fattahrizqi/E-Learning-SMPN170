@@ -7,13 +7,13 @@
           <button onclick="location.href='<?= BASEURL ?>/about'">Lihat profil</button>
         </div>
         <div class="img">
-          <img src="asset/cart is empty.png">
+          <img src="asset/homeImgV2.jpg">
         </div>
       </div>
       
       <div class="wrapper-elearning">
         <div class="img">
-          <img src="asset/cart is empty.png">
+          <img src="asset/homeImgV2-2.jpg">
         </div>
         <div class="content">
           <h1>Mendukung pembelajaran dengan <span>E-Learning</span></h1>

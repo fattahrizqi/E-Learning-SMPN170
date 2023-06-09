@@ -76,7 +76,7 @@
         </div>
         <?php if ( empty($data['class']) ) { ?>
             <div class="wrapper-emptyCard">
-                <img src="<?= BASEURL ?>asset/cart is empty.png">
+                <img src="<?= BASEURL ?>asset/homeImg2.svg">
                 <?php if ($_SESSION['role'] === 'siswa') { ?>
                     <h3>Kamu belum bergabung dengan kelas apapun.</br>Kontak gurumu untuk mendapatkan kode referensi</h3>
                     <button onclick="showModal()">Gabung +</button>

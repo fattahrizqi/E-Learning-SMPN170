@@ -37,8 +37,6 @@
                   <img src="<?= BASEURL ?>asset/caret-down-fill.svg" class="caret"></img>
                   <select id="tahun" name="tahun">
                       <option value="23">2022/2023</option>
-                      <option value="22">2021/2022</option>
-                      <option value="21">2020/2021</option>
                   </select>
               </div>
               <label for="nama">Nama Sistem </label>
