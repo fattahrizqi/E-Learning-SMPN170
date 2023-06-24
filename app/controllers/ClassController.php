@@ -95,6 +95,111 @@ class ClassController extends Controller{
         }
     }
 
+    // recap (mark)
+    public function rc($param = null){
+        // check if url parameter is not set
+        if (empty($param)) {
+            header('Location: ' . BASEURL . 'class');
+            exit();
+        }
+
+        // get user detail
+        $data['user'] = $this->model('User_model')->getUserById($_SESSION['user_id']);
+        $data['topbar'] = 2;
+        
+        // set page css, title, and identity of class teacher
+        $data['style'] = 'recap';
+        $data['title'] = 'Recap';
+        $data['class'] = $this->model('Class_model')->getTeacherClass($_SESSION['user_id']);
+
+        // explode the paramater with '-' as separator and will be array in index[0] = class code, and index[1] = post slug
+        $param = explode('-', $param);
+        $data['slug'] = $param[1];
+        $data['class_code'] = $param[0];
+        
+        // check if class exist
+        $data['detail_class'] = $this->model('Class_model')->getClassByCode($param[0]);
+        if (empty($data['detail_class'])) {
+            Flasher::setFlash('error', 'Class not found.');
+            header('Location: ' . BASEURL . 'class');
+            exit();
+        } else {
+            // check if user that access this page is teacher or admin
+            if ($_SESSION['user_id'] == $data['detail_class']['teacher'] || $_SESSION['role'] === 'admin') {
+                // get class all post
+                $data['post'] = $this->model('Class_model')->getRecapPost($data['detail_class']['id']);
+                $data['students'] = $this->model('Class_model')->getClassMember($data['detail_class']['id']);
+                foreach ($data['students'] as &$students) {
+                    $item = $this->model('Class_model')->getMemberMark($students['id'], $data['detail_class']['id']);
+                    $students['mark'] = $item;
+                }
+
+                // return view
+                $this->view('partials/elearn-header', $data);
+                $this->view('partials/topbar', $data);
+                $this->view('partials/sidebar', $data);
+                $this->view('e-learning/recap', $data);
+
+                // unset all error session
+                unset($_SESSION['errors']);
+                unset($_SESSION['old']);
+            } else {
+                Flasher::setFlash('error', 'Join the class first! get the class code from your teacher.');
+                header('Location: ' . BASEURL . 'class');
+                exit();
+            }
+        }
+    }
+
+    // export recap as excel
+    public function rcxls($param = null){
+        // check if url parameter is not set
+        if (empty($param)) {
+            header('Location: ' . BASEURL . 'class');
+            exit();
+        }
+
+        // get user detail
+        $data['user'] = $this->model('User_model')->getUserById($_SESSION['user_id']);
+        $data['topbar'] = 2;
+        
+        // set page css, title, and identity of class teacher
+        $data['style'] = 'recap';
+        $data['title'] = 'Recap';
+        $data['class'] = $this->model('Class_model')->getTeacherClass($_SESSION['user_id']);
+
+        $data['class_code'] = $param;
+        
+        // check if class exist
+        $data['detail_class'] = $this->model('Class_model')->getClassByCode($data['class_code']);
+        if (empty($data['detail_class'])) {
+            Flasher::setFlash('error', 'Error!');
+            header('Location: ' . BASEURL . 'class');
+            exit();
+        } else {
+            // check if user that access this page is teacher or admin
+            if ($_SESSION['user_id'] == $data['detail_class']['teacher'] || $_SESSION['role'] === 'admin') {
+                // get class all post
+                $data['post'] = $this->model('Class_model')->getRecapPost($data['detail_class']['id']);
+                $data['students'] = $this->model('Class_model')->getClassMember($data['detail_class']['id']);
+                foreach ($data['students'] as &$students) {
+                    $item = $this->model('Class_model')->getMemberMark($students['id'], $data['detail_class']['id']);
+                    $students['mark'] = $item;
+                }
+
+                $this->view('e-learning/recap-excel', $data);
+
+                // unset all error session
+                unset($_SESSION['errors']);
+                unset($_SESSION['old']);
+            } else {
+                Flasher::setFlash('error', 'Error!');
+                header('Location: ' . BASEURL . 'class');
+                exit();
+            }
+        }
+    }
+
     // join class (for students)
     public function jc(){
         // HTTP method check - can't accessed this method if server request method is GET

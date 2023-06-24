@@ -278,29 +278,29 @@ body {
   overflow: hidden;
   padding-bottom: 5rem;
   margin-top: 75px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 3rem 5rem;
   /* gap: rem; */
 }
 
-.button-export{
+.button-export {
   align-self: flex-end;
   display: flex;
   gap: 1rem;
 }
 
-.button-export button{
+.button-export button {
   all: unset;
   background: var(--blue);
   color: white;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 10px;
   cursor: pointer;
 }
 
-.button-export button:hover{
+.button-export button:hover {
   background: royalblue;
 }
 
@@ -327,7 +327,7 @@ body {
   min-width: 150px;
   max-width: 200px;
   height: 60px;
-  padding: 0.5rem 1rem
+  padding: 0.5rem 1rem;
 }
 
 .content-table tbody tr {
@@ -347,3 +347,35 @@ body {
   color: #009879;
 }
 
+.pdf-header {
+  display: none;
+}
+
+@media print {
+  .topbar,
+  .button-export {
+    display: none;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper-main {
+    all: unset;
+  }
+
+  .content-table {
+    box-shadow: none;
+  }
+
+  .pdf-header {
+    display: block;
+    margin-top: 2rem;
+  }
+
+  .content-table {
+    font-size: 12px;
+  }
+}

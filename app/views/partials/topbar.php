@@ -30,6 +30,7 @@
                 <a href="<?= BASEURL ?>class/dc/<?= $data['class_code'] ?>-<?= App\helpers\Unique::generate(12) ?>" class="<?= $data['title'] === 'Forum' || $data['title'] === 'Post' ? 'active' : '' ?>">Forum</a>
                 <?php if ($_SESSION['role'] == 'guru') { ?> 
                     <a href="<?= BASEURL ?>class/ln/<?= $data['class_code'] ?>-<?= App\helpers\Unique::generate(12) ?>" class="<?= $data['title'] === 'Mark' ? 'active' : '' ?>">Lembar nilai</a>
+                    <a href="<?= BASEURL ?>class/rc/<?= $data['class_code'] ?>-<?= App\helpers\Unique::generate(12) ?>" class="<?= $data['title'] === 'Recap' ? 'active' : '' ?>">Rekap Nilai</a>
                 <?php } ?>
             </div>
         </div>

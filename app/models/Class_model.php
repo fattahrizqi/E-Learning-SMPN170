@@ -79,7 +79,9 @@ class Class_model {
 
     public function getClassMember($class_id)
     {
-        $this->db->query('SELECT * FROM ' . $this->table[1] . ' WHERE class_id = :class_id');
+        $this->db->query('SELECT t_class_member.*, t_user.name, t_user.id FROM ' . $this->table[1] . '
+        INNER JOIN ' . $this->table[2] . ' ON t_class_member.user_id = t_user.id 
+        WHERE class_id = :class_id');
         $this->db->bind('class_id', $class_id);
 
         return $this->db->resultSet();
@@ -219,7 +221,7 @@ class Class_model {
 
     public function getPostBySlug($slug)
     {
-        $this->db->query('SELECT * FROM ' . $this->table[3] . ' WHERE '. $this->table[3] .'.slug = :slug');
+        $this->db->query('SELECT * FROM ' . $this->table[3] . ' WHERE slug = :slug');
         $this->db->bind('slug', $slug);
 
         return $this->db->single();
@@ -229,6 +231,27 @@ class Class_model {
     {
         $this->db->query('SELECT * FROM ' . $this->table[3] . ' WHERE class_id = :class_id');
         $this->db->bind('class_id', $class_id);
+
+        return $this->db->resultSet();
+    }
+
+    public function getMemberMark($user_id, $class_id){
+        $this->db->query('SELECT t_user_assignment.mark FROM ' . $this->table[3] . ' 
+        INNER JOIN ' . $this->table[5] . ' ON t_class_post.id = t_user_assignment.post_id 
+        WHERE t_class_post.class_id = :class_id AND t_user_assignment.user_id = :user_id 
+        ORDER BY t_user_assignment.id ASC');
+        $this->db->bind('class_id', $class_id);
+        $this->db->bind('user_id', $user_id);
+
+        return $this->db->resultSet();
+    }
+
+    public function getRecapPost($id)
+    {
+        $this->db->query('SELECT t_class_post.*, t_user.name FROM ' . $this->table[3] . ' 
+        INNER JOIN ' . $this->table[2] . ' ON t_class_post.author = t_user.id 
+        WHERE class_id = :id  ORDER BY t_class_post.id ASC');
+        $this->db->bind('id', $id);
 
         return $this->db->resultSet();
     }
